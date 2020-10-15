@@ -1,7 +1,11 @@
 package app.servlets;
 
+import app.repositories.UsersDao;
+import app.models.User;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,32 +13,43 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet {
 
+    private UsersDao usersRepository;
+
+    @Override
+    public void init() throws ServletException {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/space_taxi");
+        hikariConfig.setDriverClassName("org.postgresql.Driver");
+        hikariConfig.setUsername("postgres");
+        hikariConfig.setPassword("111");
+        hikariConfig.setMaximumPoolSize(20);
+
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+        usersRepository = new UsersDao(dataSource);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String userName = request.getParameter("username");
+        String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        LoginBean loginBean = new LoginBean();
+        User user = User.builder().build();
 
-        loginBean.setUserName(userName);
-        loginBean.setPassword(password);
+        user.setLogin(login);
+        user.setPassword(password);
 
-        LoginDao loginDao = new LoginDao();
+        String userValidate = usersRepository.authenticateUser(user);
 
-        String userValidate = null;
-        try {
-            userValidate = loginDao.authenticateUser(loginBean);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        if (userValidate.equals("SUCCESS"))
-        {
-            request.setAttribute("userName", userName);
-            request.getRequestDispatcher("/home.jsp").forward(request, response);
+        if (userValidate.equals("SUCCESS")) {
+            request.setAttribute("login", login);
+            request.getRequestDispatcher("/home.ftl").forward(request, response);
         } else {
             request.setAttribute("errMessage", userValidate);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.ftl").forward(request, response);
         }
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {}
 }
