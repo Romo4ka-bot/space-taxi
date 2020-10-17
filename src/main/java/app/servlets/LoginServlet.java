@@ -1,11 +1,11 @@
 package app.servlets;
 
-import app.repositories.UsersDao;
 import app.models.User;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+import app.services.UsersService;
 
 import java.io.IOException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,20 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet {
 
-    private UsersDao usersRepository;
+    private UsersService usersService;
+
 
     @Override
-    public void init() throws ServletException {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/space_taxi");
-        hikariConfig.setDriverClassName("org.postgresql.Driver");
-        hikariConfig.setUsername("postgres");
-        hikariConfig.setPassword("111");
-        hikariConfig.setMaximumPoolSize(20);
-
-        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
-        usersRepository = new UsersDao(dataSource);
+    public void init(ServletConfig config) throws ServletException {
+        ServletContext servletContext = config.getServletContext();
+        usersService = (UsersService) servletContext.getAttribute("usersService");
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,14 +35,14 @@ public class LoginServlet extends HttpServlet {
         user.setLogin(login);
         user.setPassword(password);
 
-        String userValidate = usersRepository.authenticateUser(user);
+        boolean userValidate = usersService.authUser(user);
 
-        if (userValidate.equals("SUCCESS")) {
+        if (userValidate) {
             request.setAttribute("login", login);
-            request.getRequestDispatcher("/home.ftl").forward(request, response);
+            request.getRequestDispatcher("/Home.ftl").forward(request, response);
         } else {
-            request.setAttribute("errMessage", userValidate);
-            request.getRequestDispatcher("/login.ftl").forward(request, response);
+            request.setAttribute("errMessage", "Invalid user credentials");
+            request.getRequestDispatcher("/Login.ftl").forward(request, response);
         }
     }
 
