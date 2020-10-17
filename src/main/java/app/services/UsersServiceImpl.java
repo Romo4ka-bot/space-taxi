@@ -19,6 +19,11 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public boolean regUser(User user) {
-        return usersDao.registrationUser(user);
+        return usersDao.save(user);
+    }
+
+    @Override
+    public boolean userIsExist(String login) {
+        return usersDao.findByLogin(login);
     }
 }

@@ -1,7 +1,10 @@
 package app.servlets;
 
 import app.models.User;
+import app.repositories.UsersDao;
 import app.services.UsersService;
+import app.services.UsersServiceImpl;
+import app.util.HashPassword;
 
 import java.io.IOException;
 import javax.servlet.ServletConfig;
@@ -18,11 +21,11 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        ServletContext servletContext = config.getServletContext();
-        usersService = (UsersService) servletContext.getAttribute("usersService");
+//        ServletContext servletContext = config.getServletContext();
+//        usersService = (UsersService) servletContext.getAttribute("usersService");
+        UsersDao usersDao = new UsersDao();
+        usersService = new UsersServiceImpl(usersDao);
     }
-
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         User user = User.builder().build();
 
         user.setLogin(login);
-        user.setPassword(password);
+        user.setPassword(HashPassword.hashing(password));
 
         boolean userValidate = usersService.authUser(user);
 
