@@ -8,7 +8,7 @@
 <#--<div style="text-align: right"><a href="LogoutServlet">Logout</a></div>-->
 <#--</body>-->
 <#--</html>-->
-
+<#--<#ftl encoding="UTF-8"/>-->
 <#import "Base.ftl" as base>
 
 <@base.main>
@@ -39,7 +39,8 @@
                             efficitur lobortis. Donec gravida nunc ac ex faucibus euismod. Aenean tempus nisi
                             justo, et elementum lectus imperdiet in. Donec in lacus sed est dignissim convallis.
                             Donec at sapien in urna pellentesque faucibus sed ut leo. Vivamus commodo vel arcu a
-                            convallis. Cras a ligula malesuada, imperdiet metus quis, feugiat urna.</p>
+                            convallis. Cras a ligula malesuada, imperdiet metus quis, feugiat urna.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -55,6 +56,11 @@
             </div>
         </div>
     </div>
+
+    <div class="bottom">
+        <div class="bottom__div"></div>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -35,6 +35,58 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>feed-servlet</servlet-name>
+        <servlet-class>app.servlets.FeedServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>feed-servlet</servlet-name>
+        <url-pattern>/FeedServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>home-servlet</servlet-name>
+        <servlet-class>app.servlets.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>home-servlet</servlet-name>
+        <url-pattern>/HomeServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>info-servlet</servlet-name>
+        <servlet-class>app.servlets.InfoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>info-servlet</servlet-name>
+        <url-pattern>/InfoServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>news-servlet</servlet-name>
+        <servlet-class>app.servlets.NewsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>news-servlet</servlet-name>
+        <url-pattern>/NewsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>profile-servlet</servlet-name>
+        <servlet-class>app.servlets.ProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>profile-servlet</servlet-name>
+        <url-pattern>/ProfileServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>freemarker</servlet-name>
         <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
 
