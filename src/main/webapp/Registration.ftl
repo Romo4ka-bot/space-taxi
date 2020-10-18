@@ -24,6 +24,24 @@
                 </label></td>
         </tr>
         <tr>
+            <td>Name</td>
+            <td><label>
+                    <input type="password" name="name"/>
+                </label></td>
+        </tr>
+        <tr>
+            <td>Surname</td>
+            <td><label>
+                    <input type="password" name="surname"/>
+                </label></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><label>
+                    <input type="password" name="gender"/>
+                </label></td>
+        </tr>
+        <tr>
             <td><span style="color:red"><#if errMessage??>${errMessage}</#if></span></td>
         </tr>
         <tr>

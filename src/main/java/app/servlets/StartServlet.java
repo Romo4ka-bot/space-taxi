@@ -10,7 +10,7 @@ import java.io.IOException;
 public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/Login.ftl");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/Home.ftl");
         requestDispatcher.forward(req,resp);
     }
 }

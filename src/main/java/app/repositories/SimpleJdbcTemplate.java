@@ -1,6 +1,6 @@
 package app.repositories;
 
-import app.servlets.DBConnection;
+import app.util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
