@@ -2,6 +2,7 @@ package app.repositories;
 
 import app.util.DBConnection;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,12 @@ import java.util.List;
 
 public class SimpleJdbcTemplate {
 
+    DataSource dataSource;
+
+    public SimpleJdbcTemplate(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... args) {
 
         Connection connection = null;
@@ -19,7 +26,7 @@ public class SimpleJdbcTemplate {
 
         try {
 
-            connection = DBConnection.createConnection();
+            connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
 
             List<T> result = new ArrayList<>();
@@ -67,9 +74,11 @@ public class SimpleJdbcTemplate {
     }
 
     public void update(String sql, Object... args) {
-        Connection connection = DBConnection.createConnection();
+        Connection connection = null;
+        PreparedStatement statement = null;
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            connection = dataSource.getConnection();
+            statement = connection.prepareStatement(sql);
 
             if (args != null)
 
@@ -80,6 +89,20 @@ public class SimpleJdbcTemplate {
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new IllegalStateException(e);
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    //ignore
+                }
+            }
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    //ignore
+                }
         }
     }
 }

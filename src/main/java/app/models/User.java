@@ -17,6 +17,9 @@ public class User {
     private String surname;
     private String login;
     private String password;
+    private String photo;
     private String gender;
+    private String data_birthday;
+    private String data_registration;
     private String info;
 }

@@ -2,28 +2,33 @@ package app.services;
 
 
 import app.models.User;
-import app.repositories.UsersDao;
+import app.repositories.UsersRepository;
 
 public class UsersServiceImpl implements UsersService {
 
-    private UsersDao usersDao;
+    private UsersRepository usersRepository;
 
-    public UsersServiceImpl(UsersDao usersDao) {
-        this.usersDao = usersDao;
+    public UsersServiceImpl(UsersRepository usersDao) {
+        this.usersRepository = usersDao;
     }
 
     @Override
     public boolean authUser(User user) {
-        return usersDao.authenticateUser(user);
+        return usersRepository.authenticateUser(user);
     }
 
     @Override
     public boolean regUser(User user) {
-        return usersDao.save(user);
+        return usersRepository.save(user);
     }
 
     @Override
     public boolean userIsExist(String login) {
-        return usersDao.findByLogin(login);
+        return usersRepository.findByLogin(login);
+    }
+
+    @Override
+    public User getUserById(Long user_id) {
+        return usersRepository.findById(user_id);
     }
 }

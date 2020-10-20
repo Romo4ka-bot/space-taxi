@@ -1,10 +1,13 @@
 package app.repositories;
 
 import app.models.User;
+
+import javax.sql.DataSource;
 import java.util.List;
 
-public class UsersDao implements UsersRepository {
+public class UsersRepositoryJdbcImpl implements UsersRepository {
 
+    private DataSource dataSource;
     private SimpleJdbcTemplate template;
 
     //language=SQL
@@ -24,12 +27,15 @@ public class UsersDao implements UsersRepository {
             .login(row.getString("login"))
             .password(row.getString("password"))
             .gender(row.getString("gender"))
+            .data_birthday(row.getString("data_birthday"))
+            .data_registration(row.getString("data_registration"))
             .info(row.getString("info"))
             .build();
 
 
-    public UsersDao() {
-        template = new SimpleJdbcTemplate();
+    public UsersRepositoryJdbcImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+        template = new SimpleJdbcTemplate(dataSource);
     }
 
     @Override
@@ -78,5 +84,10 @@ public class UsersDao implements UsersRepository {
     @Override
     public void delete(User entity) {
 
+    }
+
+    @Override
+    public User findById(Long id) {
+        return null;
     }
 }

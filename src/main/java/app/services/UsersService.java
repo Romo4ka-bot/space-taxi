@@ -9,4 +9,6 @@ public interface UsersService {
     boolean regUser(User user);
 
     boolean userIsExist(String login);
+
+    User getUserById(Long user_id);
 }
