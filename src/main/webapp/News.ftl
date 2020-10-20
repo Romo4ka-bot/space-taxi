@@ -5,7 +5,7 @@
         <div class="news_holder">
             <div class="post">
                 <div class="post__image">
-                    <img src="img/palnet_photo.jpg">
+                    <img src="SpaceDrive/img/palnet_photo.jpg">
                 </div>
                 <div class="post__text">
                     <div class="text__heading">Как сделать цветную горизонтальную линию?</div>
@@ -24,7 +24,7 @@
 
             <div class="post">
                 <div class="post__image">
-                    <img src="img/palnet_photo.jpg">
+                    <img src="SpaceDrive/img/palnet_photo.jpg">
                 </div>
                 <div class="post__text">
                     <div class="text__heading">Как сделать цветную горизонтальную линию?</div>
@@ -43,7 +43,7 @@
 
             <div class="post">
                 <div class="post__image">
-                    <img src="img/palnet_photo.jpg">
+                    <img src="SpaceDrive/img/palnet_photo.jpg">
                 </div>
                 <div class="post__text">
                     <div class="text__heading">Как сделать цветную горизонтальную линию?</div>
@@ -62,7 +62,7 @@
 
             <div class="post">
                 <div class="post__image">
-                    <img src="img/palnet_photo.jpg">
+                    <img src="SpaceDrive/img/palnet_photo.jpg">
                 </div>
                 <div class="post__text">
                     <div class="text__heading">Как сделать цветную горизонтальную линию?</div>
@@ -106,6 +106,7 @@
         </div>
     </div>
 
+    <link rel="stylesheet" href="/SpaceDrive/css/news.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

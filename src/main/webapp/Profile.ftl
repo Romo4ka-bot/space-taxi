@@ -3,8 +3,8 @@
 <@base.main>
     <div class="users_profile">
         <div class="edit">
-            <img class="users_photo" src="img/icon-spaceman.jpg"><br>
-            <p><a href="#"><img src="img/settings.png">Редактировать</a></p>
+            <img class="users_photo" src="SpaceDrive/img/icon-spaceman.jpg"><br>
+            <p><a href="#"><img src="SpaceDrive/img/settings.png">Редактировать</a></p>
         </div>
         <div class="users_information">
             <p class="fio"><span>Иванов Иван Иванович</span></p>
@@ -27,8 +27,7 @@
         </div>
     </div>
 
-
-
+    <link rel="stylesheet" href="/SpaceDrive/css/profile.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

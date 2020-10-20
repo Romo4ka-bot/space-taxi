@@ -27,10 +27,10 @@ public class AppConfigServletContextListener implements ServletContextListener {
 
         MyDataSourceConfig simpleConfig = new MyDataSourceConfig();
 
-        simpleConfig.setJdbcUrl(properties.getProperty("db.jdbc.url"));
-        simpleConfig.setUsername(properties.getProperty("db.jdbc.username"));
-        simpleConfig.setPassword(properties.getProperty("db.jdbc.password"));
-        simpleConfig.setDriverClassName(properties.getProperty("db.jdbc.driver-class-name"));
+        simpleConfig.setUrl(properties.getProperty("db.url"));
+        simpleConfig.setUsername(properties.getProperty("db.username"));
+        simpleConfig.setPassword(properties.getProperty("db.password"));
+        simpleConfig.setDriver(properties.getProperty("db.driver-class-name"));
 
 
         MyDataSource dataSource = new MyDataSource(simpleConfig);
@@ -48,7 +48,7 @@ public class AppConfigServletContextListener implements ServletContextListener {
         ReviewRepository reviewRepository = new ReviewRepositoryJdbcImpl(dataSource, usersService, feedService);
         ReviewService reviewService = new ReviewServiceImpl(reviewRepository);
 
-        servletContextEvent.getServletContext().setAttribute("datasource", dataSource);
+        servletContextEvent.getServletContext().setAttribute("dataSource", dataSource);
         servletContextEvent.getServletContext().setAttribute("userService", usersService);
         servletContextEvent.getServletContext().setAttribute("feedService", feedService);
         servletContextEvent.getServletContext().setAttribute("newsService", newsService);

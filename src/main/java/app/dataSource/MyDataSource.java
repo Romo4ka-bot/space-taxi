@@ -13,13 +13,13 @@ import java.util.logging.Logger;
 public class MyDataSource implements DataSource {
 
     private final String url;
-    private final String jdbcDriver;
+    private final String driver;
     private final String username;
     private final String password;
 
     public MyDataSource(MyDataSourceConfig myDataSourceConfig) {
-        this.url = myDataSourceConfig.getJdbcUrl();
-        this.jdbcDriver = myDataSourceConfig.getDriverClassName();
+        this.url = myDataSourceConfig.getUrl();
+        this.driver = myDataSourceConfig.getDriver();
         this.username = myDataSourceConfig.getUsername();
         this.password = myDataSourceConfig.getPassword();
     }
@@ -27,7 +27,7 @@ public class MyDataSource implements DataSource {
     @SneakyThrows
     @Override
     public Connection getConnection() throws SQLException {
-        Class.forName(jdbcDriver);
+        Class.forName(driver);
         return DriverManager.getConnection(url, username, password);
     }
 

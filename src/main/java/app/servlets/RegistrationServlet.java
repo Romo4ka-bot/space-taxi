@@ -1,19 +1,17 @@
 package app.servlets;
 
 import app.models.User;
-import app.repositories.UsersDao;
+import app.repositories.UsersRepositoryJdbcImpl;
 import app.services.UsersService;
 import app.services.UsersServiceImpl;
 import app.util.HashPassword;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 
 public class RegistrationServlet extends HttpServlet {
@@ -22,10 +20,9 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-//        ServletContext servletContext = config.getServletContext();
-//        usersService = (UsersService) servletContext.getAttribute("usersService");
-        UsersDao usersDao = new UsersDao();
-        usersService = new UsersServiceImpl(usersDao);
+        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("datasource");
+        UsersRepositoryJdbcImpl usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
+        usersService = new UsersServiceImpl(usersRepositoryJdbcImpl);
     }
 
 

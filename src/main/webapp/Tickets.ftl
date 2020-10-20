@@ -4,7 +4,7 @@
     <div class="ticket_container">
         <div class="ticket_div">
             <div class="ticket__image">
-                <img src="img/mars_image.jpg">
+                <img src="SpaceDrive/img/mars_image.jpg">
             </div>
             <div class="ticket__information">
                 <div class="information__head">
@@ -53,7 +53,7 @@
         <div class="comments_holder">
             <div class="comment">
                 <div class="comment__image">
-                    <img src="img/space-shuttle.jpg">
+                    <img src="SpaceDrive/img/space-shuttle.jpg">
                 </div>
                 <div class="comment__inform">
                     <div class="comment__author">
@@ -70,7 +70,7 @@
             </div>
             <div class="comment">
                 <div class="comment__image">
-                    <img src="img/space-shuttle.jpg">
+                    <img src="SpaceDrive/img/space-shuttle.jpg">
                 </div>
                 <div class="comment__inform">
                     <div class="comment__author">
@@ -87,7 +87,7 @@
             </div>
             <div class="comment">
                 <div class="comment__image">
-                    <img src="img/space-shuttle.jpg">
+                    <img src="SpaceDrive/img/space-shuttle.jpg">
                 </div>
                 <div class="comment__inform">
                     <div class="comment__author">
@@ -104,7 +104,7 @@
             </div>
             <div class="comment">
                 <div class="comment__image">
-                    <img src="img/space-shuttle.jpg">
+                    <img src="SpaceDrive/img/space-shuttle.jpg">
                 </div>
                 <div class="comment__inform">
                     <div class="comment__author">
@@ -127,6 +127,7 @@
         </div>
     </div>
 
+    <link rel="stylesheet" href="/SpaceDrive/css/ticket_page.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

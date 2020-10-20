@@ -23,19 +23,19 @@
                     <a class="nav-link" href="InfoServlet">Про нас</a>
                 </li>
             </ul>
-            <#if login??>
+<#--            <#if user??>-->
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item active">
                         <a class="nav-link" href="LoginServlet">Войти</a>
                     </li>
                 </ul>
-                <#else>
-                    <ul class="navbar-nav navbar-right">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="LogoutServlet">Выйти</a>
-                        </li>
-                    </ul>
-            </#if>
+<#--                <#else>-->
+<#--                    <ul class="navbar-nav navbar-right">-->
+<#--                        <li class="nav-item active">-->
+<#--                            <a class="nav-link" href="LogoutServlet">Выйти</a>-->
+<#--                        </li>-->
+<#--                    </ul>-->
+<#--            </#if>-->
         </div>
     </nav>
 </div>
