@@ -8,8 +8,8 @@ public class UsersServiceImpl implements UsersService {
 
     private UsersRepository usersRepository;
 
-    public UsersServiceImpl(UsersRepository usersDao) {
-        this.usersRepository = usersDao;
+    public UsersServiceImpl(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
     }
 
     @Override

@@ -1,7 +1,5 @@
 package app.repositories;
 
-import app.util.DBConnection;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

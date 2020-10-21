@@ -10,6 +10,9 @@ public class FeedRepositoryJdbcImpl implements FeedRepository {
     private final DataSource dataSource;
     private SimpleJdbcTemplate template;
 
+    //language=SQL
+    private String SQL_SELECT = "select * from feed where id < 6";
+
     private RowMapper<Feed> feedRowMapper = row -> Feed.builder()
             .id(row.getLong("id"))
             .name(row.getString("name"))
@@ -27,8 +30,9 @@ public class FeedRepositoryJdbcImpl implements FeedRepository {
     }
 
     @Override
-    public List findAll() {
-        return null;
+    public List<Feed> findAll() {
+        List<Feed> list = template.query(SQL_SELECT, feedRowMapper);
+        return list;
     }
 
     @Override

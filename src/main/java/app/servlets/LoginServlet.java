@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("dataSource");
+        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("datasource");
         UsersRepositoryJdbcImpl usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
         usersService = new UsersServiceImpl(usersRepositoryJdbcImpl);
     }
@@ -35,7 +35,8 @@ public class LoginServlet extends HttpServlet {
         User user = User.builder().build();
 
         user.setLogin(login);
-        user.setPassword(HashPassword.hashing(password));
+//        user.setPassword(HashPassword.hashing(password));
+        user.setPassword(password);
 
         boolean userValidate = usersService.authUser(user);
         String check = request.getParameter("check");

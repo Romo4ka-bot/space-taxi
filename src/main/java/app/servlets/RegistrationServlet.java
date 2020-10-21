@@ -20,7 +20,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("datasource");
+        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("dataSource");
         UsersRepositoryJdbcImpl usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
         usersService = new UsersServiceImpl(usersRepositoryJdbcImpl);
     }
@@ -29,19 +29,20 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String name = req.getParameter("name");
-        String surname = req.getParameter("surname");
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String name = req.getParameter("first_name");
+        String surname = req.getParameter("second_name");
+        String login = req.getParameter("email");
         String gender = req.getParameter("gender");
+        String password = req.getParameter("password1");
 
         User user = User.builder().build();
 
         user.setName(name);
         user.setSurname(surname);
         user.setLogin(login);
-        user.setPassword(HashPassword.hashing(password));
         user.setGender(gender);
+//        user.setPassword(HashPassword.hashing(password));
+        user.setPassword(password);
 
         boolean status = usersService.regUser(user);
 

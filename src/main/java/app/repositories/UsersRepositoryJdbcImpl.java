@@ -11,7 +11,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private SimpleJdbcTemplate template;
 
     //language=SQL
-    private final String SQL_SELECT_LOG_AND_PASS = "select * from users where login = ? and password = ?";
+    private final String SQL_SELECT_LOG_AND_PASS = "select * from \"users\" where login = ? and password = ?";
 
     //language=SQL
     private final String SQL_SELECT_USER_LOG = "select * from users where login = ?";

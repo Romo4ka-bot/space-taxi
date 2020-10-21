@@ -78,7 +78,7 @@
 
                 <div class="login__form">
                     <div id="error_text" class="error_text"></div>
-                    <form id="form" method="post">
+                    <form id="form" action="RegistrationServlet" method="post">
 
                         <div class="form__input">
                             <div class="input__icon">
