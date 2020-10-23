@@ -17,8 +17,11 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_SELECT_USER_LOG = "select * from users where login = ?";
 
     //language=SQL
-    private final String SQL_INSERT_USER = "insert into users(name, surname, login, password, gender) " +
+    private final String SQL_INSERT_USER = "insert into \"users\"(name, surname, login, password, gender) " +
             "values(?, ?, ?, ?, ?);";
+
+    //language=SQL
+    private String SQL_SELECT_BY_ID = "select * from \"users\" where id = ?";
 
     private RowMapper<User> userRowMapper = row -> User.builder()
             .id(row.getLong("id"))
@@ -27,9 +30,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .login(row.getString("login"))
             .password(row.getString("password"))
             .gender(row.getString("gender"))
-            .data_birthday(row.getString("data_birthday"))
-            .data_registration(row.getString("data_registration"))
-            .info(row.getString("info"))
+//            .dateBirthday(row.getString("date_birthday"))
+//            .dateRegistration(row.getString("date_registration"))
+//            .info(row.getString("info"))
             .build();
 
 
@@ -59,21 +62,14 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public boolean save(User entity) {
+    public void save(User entity) {
 
         String name = entity.getName();
         String surname = entity.getSurname();
         String login = entity.getLogin();
         String password = entity.getPassword();
         String gender = entity.getGender();
-
-        boolean ex = findByLogin(login);
-
-        if (ex) {
-            template.update(SQL_INSERT_USER, name, surname, login, password, gender);
-        }
-
-        return ex;
+        template.update(SQL_INSERT_USER, name, surname, login, password, gender);
     }
 
     @Override
@@ -88,6 +84,6 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public User findById(Long id) {
-        return null;
+        return template.query(SQL_SELECT_BY_ID, userRowMapper, id).get(0);
     }
 }

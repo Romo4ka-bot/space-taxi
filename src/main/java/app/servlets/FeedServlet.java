@@ -22,7 +22,7 @@ public class FeedServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("datasource");
+        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("dataSource");
         FeedRepositoryJdbcImpl feedRepositoryJdbcImpl = new FeedRepositoryJdbcImpl(dataSource);
         ReviewRepositoryJdbcImpl reviewRepositoryJdbcImpl = new ReviewRepositoryJdbcImpl(dataSource, new UsersServiceImpl(new UsersRepositoryJdbcImpl(dataSource)), feedService);
         feedService = new FeedServiceImpl(feedRepositoryJdbcImpl);
@@ -37,8 +37,6 @@ public class FeedServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         List<Feed> list = feedService.getListOfFeeds();
-
-        int count = reviewService.getReviewByFeedId();
 
                 req.setAttribute("list", list);
         req.getRequestDispatcher("/Feed.ftl").forward(req, resp);

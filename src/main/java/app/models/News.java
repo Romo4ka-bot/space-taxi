@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class News {
     private Long id;
-    private String name;
+    private String title;
     private String photo;
     private String content;
     private String date;

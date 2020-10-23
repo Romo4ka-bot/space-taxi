@@ -19,7 +19,7 @@ public class User {
     private String password;
     private String photo;
     private String gender;
-    private String data_birthday;
-    private String data_registration;
+    private String dateBirthday;
+    private String dateRegistration;
     private String info;
 }

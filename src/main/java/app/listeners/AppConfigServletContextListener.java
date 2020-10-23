@@ -1,9 +1,9 @@
 package app.listeners;
 
-import app.dataSource.MyDataSource;
-import app.dataSource.MyDataSourceConfig;
 import app.repositories.*;
 import app.services.*;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import lombok.SneakyThrows;
 
 import javax.servlet.ServletContextEvent;
@@ -25,18 +25,19 @@ public class AppConfigServletContextListener implements ServletContextListener {
             throw new IllegalStateException(e);
         }
 
-        MyDataSourceConfig simpleConfig = new MyDataSourceConfig();
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/space-taxi");
+        hikariConfig.setUsername("postgres");
+        hikariConfig.setDriverClassName("org.postgresql.Driver");
+        hikariConfig.setPassword("111");
+        hikariConfig.setMaximumPoolSize(10);
 
-        simpleConfig.setUrl(properties.getProperty("db.url"));
-        simpleConfig.setUsername(properties.getProperty("db.username"));
-        simpleConfig.setPassword(properties.getProperty("db.password"));
-        simpleConfig.setDriver(properties.getProperty("db.driver-class-name"));
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+        servletContextEvent.getServletContext().setAttribute("dataSource", dataSource);
 
 
-        MyDataSource dataSource = new MyDataSource(simpleConfig);
 
-
-        UsersRepositoryJdbcImpl usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
+        UsersRepository usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
         UsersService usersService = new UsersServiceImpl(usersRepositoryJdbcImpl);
 
         FeedRepository feedRepository = new FeedRepositoryJdbcImpl(dataSource);

@@ -19,7 +19,11 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public boolean regUser(User user) {
-        return usersRepository.save(user);
+        if (userIsExist(user.getLogin())) {
+            usersRepository.save(user);
+            return true;
+        }
+        return false;
     }
 
     @Override

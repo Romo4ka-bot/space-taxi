@@ -51,17 +51,17 @@
                 <div class="card__info">
                     <div class="card__text">
                         <div class="text__heading">
-                            <div class="heading__review"><a href="#">$(count) отзывов</a></div>
-                            <div class="heading__name"><a href="#">$(list.title)</a></div>
+                            <div class="heading__review"><a href="TicketServlet?id=${list.id}">${list.countReview} отзывов</a></div>
+                            <div class="heading__name"><a href="TicketServlet?id=${list.id}">${list.title}</a></div>
                         </div>
                         <div class="text__cont">
-                            <div class="cont__date">$(list.dateFrom) - $(list.dateTo)</div>
-                            <div class="cont__inf">$(list.description)</div>
+                            <div class="cont__date">${list.dateFrom} - ${list.dateTo}</div>
+                            <div class="cont__inf">${list.description}</div>
                         </div>
                     </div>
                     <div class="card__prise">
-                        <div class="prise__count">$(list.price)₽</div>
-                        <div class="prise__btn"><a href="#">Подробнее</a></div>
+                        <div class="prise__count">${list.price}₽</div>
+                        <div class="prise__btn"><a href="TicketServlet?id=${list.id}">Подробнее</a></div>
                     </div>
                 </div>
             </div>

@@ -4,4 +4,6 @@ import app.models.Feed;
 
 public interface FeedRepository extends CrudRepository<Feed> {
     Feed findById(Long id);
+
+    Integer findCountReviewFromFeed(Long id);
 }

@@ -14,6 +14,9 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     private UsersService usersService;
     private FeedService feedService;
 
+    //language=SQL
+    private String SQL_SELECT_BY_ID = "select * from review where feed_id = ?";
+
     private RowMapper<Review> reviewRowMapper = row -> Review.builder()
             .feed(feedService.getFeedById(row.getLong("news_id")))
             .user(usersService.getUserById(row.getLong("user_id")))
@@ -34,8 +37,7 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     }
 
     @Override
-    public boolean save(Review entity) {
-        return false;
+    public void save(Review entity) {
     }
 
     @Override
@@ -48,4 +50,8 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
 
     }
 
+    @Override
+    public List<Review> findAllByFeedId(Long feed_id) {
+        return template.query(SQL_SELECT_BY_ID, reviewRowMapper, feed_id);
+    }
 }
