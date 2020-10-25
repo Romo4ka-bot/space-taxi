@@ -21,7 +21,7 @@
                         </div>
                         <div class="prise__buy">
                             <div class="prise__count">${feed.price}₽</div>
-                            <div class="prise__btn"><a href="#">Забронировать</a></div>
+                            <div class="prise__btn"><a href="ConfirmationServlet">Забронировать</a></div>
                         </div>
                     </div>
                 </div>
@@ -31,87 +31,90 @@
             <div class="comment_us">
 
             </div>
-            <div class="comments_heading">${feed.countReview} Отзывов</div>
-            <form action="ReviewServlet" method="post">
-                <div class="comment_us">
-                    <div class="comment_us__input">
-                        <input type="hidden" name="id" value="${feed.id}">
-                        <textarea name="comment" placeholder="Оставьте свой отзыв..."></textarea>
+            <div class="comments_heading">Отзывы</div>
+            <#if user??>
+                <form action="ReviewServlet" method="post">
+                    <div class="comment_us">
+                        <div class="comment_us__input">
+                            <input type="hidden" name="feed_id" value="${feed.id}">
+                            <textarea name="comment" placeholder="Оставьте свой отзыв..."></textarea>
+                        </div>
+                        <div class="comment_us__btn">
+                            <button type="submit">Send</button>
+                        </div>
                     </div>
-                    <div class="comment_us__btn">
-                        <button type="submit">Send</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            <#else>
+                <span class="text__item">Чтобы написать отзыв <a href="LoginServlet">авторизируйтесь</a></span>
+            </#if>
             <div class="comments_holder">
-                <div class="comment">
-                    <div class="comment__image">
-                        <img src="SpaceDrive/img/space-shuttle.jpg">
-                    </div>
-                    <div class="comment__inform">
-                        <div class="comment__author">
-                            <div class="author__name">Roman</div>
-                            <div class="author__day">22.10.2020</div>
+                <#list list as list>
+                    <div class="comment">
+                        <div class="comment__image">
+                            <img src="SpaceDrive/img/space-shuttle.jpg">
                         </div>
-                        <div class="comment__text">
-                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.
-                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment__image">
-                        <img src="SpaceDrive/img/space-shuttle.jpg">
-                    </div>
-                    <div class="comment__inform">
-                        <div class="comment__author">
-                            <div class="author__name">Roman</div>
-                            <div class="author__day">22.10.2020</div>
-                        </div>
-                        <div class="comment__text">
-                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.
-                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>
+                        <div class="comment__inform">
+                            <div class="comment__author">
+                                <div class="author__name">${list.user.name}</div>
+                                <div class="author__day">${list.date}</div>
+                            </div>
+                            <div class="comment__text">
+                                <p>${list.content}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="comment">
-                    <div class="comment__image">
-                        <img src="SpaceDrive/img/space-shuttle.jpg">
-                    </div>
-                    <div class="comment__inform">
-                        <div class="comment__author">
-                            <div class="author__name">Roman</div>
-                            <div class="author__day">22.10.2020</div>
-                        </div>
-                        <div class="comment__text">
-                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.
-                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment__image">
-                        <img src="SpaceDrive/img/space-shuttle.jpg">
-                    </div>
-                    <div class="comment__inform">
-                        <div class="comment__author">
-                            <div class="author__name">Roman</div>
-                            <div class="author__day">22.10.2020</div>
-                        </div>
-                        <div class="comment__text">
-                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.
-                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.
-                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>
-                        </div>
-                    </div>
-                </div>
+                </#list>
+                <#--                <div class="comment">-->
+                <#--                    <div class="comment__image">-->
+                <#--                        <img src="SpaceDrive/img/space-shuttle.jpg">-->
+                <#--                    </div>-->
+                <#--                    <div class="comment__inform">-->
+                <#--                        <div class="comment__author">-->
+                <#--                            <div class="author__name">Roman</div>-->
+                <#--                            <div class="author__day">22.10.2020</div>-->
+                <#--                        </div>-->
+                <#--                        <div class="comment__text">-->
+                <#--                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
+                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.-->
+                <#--                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
+                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>-->
+                <#--                        </div>-->
+                <#--                    </div>-->
+                <#--                </div>-->
+                <#--                <div class="comment">-->
+                <#--                    <div class="comment__image">-->
+                <#--                        <img src="SpaceDrive/img/space-shuttle.jpg">-->
+                <#--                    </div>-->
+                <#--                    <div class="comment__inform">-->
+                <#--                        <div class="comment__author">-->
+                <#--                            <div class="author__name">Roman</div>-->
+                <#--                            <div class="author__day">22.10.2020</div>-->
+                <#--                        </div>-->
+                <#--                        <div class="comment__text">-->
+                <#--                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
+                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.-->
+                <#--                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
+                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>-->
+                <#--                        </div>-->
+                <#--                    </div>-->
+                <#--                </div>-->
+                <#--                <div class="comment">-->
+                <#--                    <div class="comment__image">-->
+                <#--                        <img src="SpaceDrive/img/space-shuttle.jpg">-->
+                <#--                    </div>-->
+                <#--                    <div class="comment__inform">-->
+                <#--                        <div class="comment__author">-->
+                <#--                            <div class="author__name">Roman</div>-->
+                <#--                            <div class="author__day">22.10.2020</div>-->
+                <#--                        </div>-->
+                <#--                        <div class="comment__text">-->
+                <#--                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
+                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.-->
+                <#--                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
+                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>-->
+                <#--                        </div>-->
+                <#--                    </div>-->
+                <#--                </div>-->
             </div>
         </div>
 

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FeedServlet extends HttpServlet {
@@ -31,14 +32,41 @@ public class FeedServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String search = req.getParameter("search");
+        String sorting = req.getParameter("sorting");
+
+        List<Feed> feeds = new ArrayList<>();
+        if (search == null) {
+            switch (sorting) {
+                case "normal":
+                    feeds = feedService.getAll();
+                    break;
+                case "priceIncrease":
+                    feeds = feedService.getAllByIncreasePrice();
+                    break;
+                case "priceDecrease":
+                    feeds = feedService.getAllByDecreasePrice();
+                    break;
+            }
+        }
+
+        req.setAttribute("list", feeds);
+        resp.sendRedirect("FeedServlet");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Feed> list = feedService.getListOfFeeds();
+        List<Feed> feeds = (List<Feed>) req.getAttribute("list");
 
-                req.setAttribute("list", list);
-        req.getRequestDispatcher("/Feed.ftl").forward(req, resp);
+        if (feeds == null) {
+            List<Feed> list = feedService.getAll();
+            req.setAttribute("list", list);
+
+        } else
+            req.setAttribute("list", feeds);
+
+            req.getRequestDispatcher("/Feed.ftl").forward(req, resp);
     }
 }

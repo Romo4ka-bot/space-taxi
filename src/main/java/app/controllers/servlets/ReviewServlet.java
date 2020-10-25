@@ -1,9 +1,8 @@
 package app.controllers.servlets;
 
 import app.models.User;
-import app.services.FeedService;
-import app.services.ReviewService;
-import app.services.UsersService;
+import app.repositories.*;
+import app.services.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,19 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ReviewServlet extends HttpServlet {
 
-    ReviewService reviewService;
-    UsersService usersService;
-    FeedService feedService;
+    private ReviewService reviewService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        reviewService = (ReviewService) config.getServletContext().getAttribute("reviewService");
+        DataSource dataSource = (DataSource) config.getServletContext().getAttribute("dataSource");
+
+        FeedRepository feedRepository = new FeedRepositoryJdbcImpl(dataSource);
+        FeedService feedService = new FeedServiceImpl(feedRepository);
+
+        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
+        UsersService usersService = new UsersServiceImpl(usersRepository);
+
+        ReviewRepository reviewRepository = new ReviewRepositoryJdbcImpl(dataSource, usersService, feedService);
+        reviewService = new ReviewServiceImpl(reviewRepository);
     }
 
     @Override
@@ -32,14 +39,13 @@ public class ReviewServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         String content = req.getParameter("comment");
-        Long feed_id = Long.parseLong(req.getParameter("id"));
+        Long feed_id = Long.parseLong(req.getParameter("feed_id"));
 
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd");
         String date = formatForDateNow.format(dateNow);
 
         reviewService.addReview(feed_id, user.getId(), date, content);
-
-
+        resp.sendRedirect("TicketServlet?id=" + feed_id);
     }
 }

@@ -28,7 +28,7 @@ public class NewsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<News> news = newsService.getListOfNews();
+        List<News> news = newsService.getAll();
         req.setAttribute("list", news);
         req.getRequestDispatcher("/News.ftl").forward(req, resp);
     }

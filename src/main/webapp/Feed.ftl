@@ -4,7 +4,7 @@
     <div class="search">
         <form action="FeedServlet" method="post">
             <div class="search__bar">
-                <input type="text" class="search_term" placeholder="What are you looking for?">
+                <input name="search" type="text" class="search_term" placeholder="What are you looking for?">
                 <button type="button" id="btn_open" class="btn_open_more">
                     <i class="fa fa-caret-down"></i>
                 </button>
@@ -17,10 +17,10 @@
                     <div class="config__sort_by">
                         <div class="form-group ">
                             <label for="sort_by__select">Сортировать по:</label>
-                            <select class="form-control" id="sort_by__select">
-                                <option>Умолчанию</option>
-                                <option>Цене по убыванию</option>
-                                <option>Цене по возрастанию</option>
+                            <select name="sorting" class="form-control" id="sort_by__select">
+                                <option value="normal">Умолчанию</option>
+                                <option value="priceIncrease">Цене по возрастанию</option>
+                                <option value="priceDecrease">Цене по убыванию</option>
                             </select>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                 <div class="card__info">
                     <div class="card__text">
                         <div class="text__heading">
-                            <div class="heading__review"><a href="TicketServlet?id=${list.id}">${list.countReview} отзывов</a></div>
+                            <div class="heading__review"><a href="TicketServlet?id=${list.id}">Отзывы</a></div>
                             <div class="heading__name"><a href="TicketServlet?id=${list.id}">${list.title}</a></div>
                         </div>
                         <div class="text__cont">

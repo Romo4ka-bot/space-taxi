@@ -27,4 +27,9 @@ public class ReviewServiceImpl implements ReviewService {
     public void addReview(Long feed_id, Long user_id, String date, String content) {
         reviewRepository.saveReview(feed_id, user_id, date, content);
     }
+
+    @Override
+    public List<Review> getAllById(Long feed_id) {
+        return reviewRepository.findAllByFeedId(feed_id);
+    }
 }

@@ -18,7 +18,17 @@ public class FeedServiceImpl implements FeedService {
     }
 
     @Override
-    public List<Feed> getListOfFeeds() {
+    public List<Feed> getAll() {
         return feedRepository.findAll();
+    }
+
+    @Override
+    public List<Feed> getAllByIncreasePrice() {
+        return feedRepository.findAllByIncreasePrice();
+    }
+
+    @Override
+    public List<Feed> getAllByDecreasePrice() {
+        return feedRepository.findAllByDecreasePrice();
     }
 }

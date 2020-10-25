@@ -11,4 +11,6 @@ public interface ReviewService {
     int getReviewCountById(Long feed_id);
 
     void addReview(Long feed_id, Long user_id, String date, String content);
+
+    List<Review> getAllById(Long feed_id);
 }

@@ -16,7 +16,10 @@ public class FeedRepositoryJdbcImpl implements FeedRepository {
     private String SQL_SELECT_BY_ID = "select * from feed where id = ?";
 
     //language=SQL
-    private String SQL_SELECT_REVIEW_BY_ID = "select * from review where feed_id = ?";
+    private String SQL_SELECT_ORDER_DESC_PRICE = "select * from feed order by price desc";
+
+    //language=SQL
+    private String SQL_SELECT_ORDER_PRICE = "select * from feed order by price desc";
 
     private RowMapper<Feed> feedRowMapper = row -> Feed.builder()
             .id(row.getLong("id"))
@@ -27,7 +30,6 @@ public class FeedRepositoryJdbcImpl implements FeedRepository {
             .dateTo(row.getString("date_to"))
             .description(row.getString("description"))
             .price(row.getInt("price"))
-            .countReview(findCountReviewFromFeed(row.getLong("id")))
             .build();
 
     public FeedRepositoryJdbcImpl(DataSource dataSource) {
@@ -59,7 +61,12 @@ public class FeedRepositoryJdbcImpl implements FeedRepository {
     }
 
     @Override
-    public Integer findCountReviewFromFeed(Long id) {
-        return template.query(SQL_SELECT_REVIEW_BY_ID, feedRowMapper, id).size();
+    public List<Feed> findAllByIncreasePrice() {
+        return template.query(SQL_SELECT_ORDER_DESC_PRICE, feedRowMapper);
+    }
+
+    @Override
+    public List<Feed> findAllByDecreasePrice() {
+        return template.query(SQL_SELECT_ORDER_PRICE, feedRowMapper);
     }
 }

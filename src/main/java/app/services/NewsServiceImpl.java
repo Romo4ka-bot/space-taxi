@@ -13,7 +13,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<News> getListOfNews() {
+    public List<News> getAll() {
         return newsRepository.findAll();
     }
 }

@@ -20,9 +20,9 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     //language=SQL
     private String SQL_INSERT = "insert into review(feed_id, users_id, date, content) values(?, ?, ?, ?);";
 
-    private RowMapper<Review> reviewRowMapper = row -> Review.builder()
-            .feed(feedService.getFeedById(row.getLong("news_id")))
-            .user(usersService.getUserById(row.getLong("user_id")))
+    protected RowMapper<Review> reviewRowMapper = row -> Review.builder()
+            .feed(feedService.getFeedById(row.getLong("feed_id")))
+            .user(usersService.getUserById(row.getLong("users_id")))
             .date(row.getString("date"))
             .content(row.getString("content"))
             .build();
