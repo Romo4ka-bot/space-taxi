@@ -1,4 +1,4 @@
-package app.listeners;
+package app.controllers.listeners;
 
 import app.repositories.*;
 import app.services.*;

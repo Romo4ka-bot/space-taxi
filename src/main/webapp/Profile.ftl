@@ -1,31 +1,29 @@
 <#import "Base.ftl" as base>
 
 <@base.main>
-    <div class="users_profile">
-        <div class="edit">
-            <img class="users_photo" src="SpaceDrive/img/icon-spaceman.jpg"><br>
-            <p><a href="#"><img src="SpaceDrive/img/settings.png">Редактировать</a></p>
+    <#if user??>
+        <div class="users_profile">
+            <div class="edit">
+                <img class="users_photo" src="SpaceDrive/img/icon-spaceman.jpg"><br>
+                <p><a href="ProfileEditServlet"><img src="SpaceDrive/img/settings.png">Редактировать</a></p>
+            </div>
+            <div class="users_information">
+                <p class="fio"><span>${user.name} ${user.surname}</span></p>
+                <p class="email"><span>E-mail: </span>${user.login}</p>
+                <p class="birth_date"><span>Дата рождения: </span><#if user.dateBirthday??>${user.dateBirthday}</#if></p>
+                <p class="register_date"><span>Дата регистрации: </span><#if user.dateRegistration??>${user.dateRegistration}</#if></p>
+                <p class="gender"><span>Пол: </span>${user.gender}</p>
+            </div>
+            <div class="about_me">
+                <p><span>Обо мне: </span><#if user.info??>${user.info}</#if></p>
+            </div>
         </div>
-        <div class="users_information">
-            <p class="fio"><span>Иванов Иван Иванович</span></p>
-            <p class="email"><span>E-mail: </span>cosmos9990@lamail.ru0</p>
-            <p class="birth_date"><span>Дата рождения: </span>16.10.2020</p>
-            <p class="register_date"><span>Дата регистрации: </span>16.10.2020</p>
-            <p class="gender"><span>Пол: </span>Мужской</p>
-        </div>
-        <div class="about_me">
-            <p><span>Обо мне: </span>Равным образом реализация намеченных плановых заданий играет важную роль в
-                формировании модели развития. Товарищи! новая модель организационной деятельности
-                позволяет оценить значение систем массового участия. Идейные соображения высшего порядка,
-                а также начало повседневной работы по формированию позиции позволяет оценить значение
-                дальнейших направлений развития. Таким образом дальнейшее развитие различных.</p>
-        </div>
-    </div>
 
-    <div class="bottom">
-        <div class="bottom__div">
+        <div class="bottom">
+            <div class="bottom__div">
+            </div>
         </div>
-    </div>
+    </#if>
 
     <link rel="stylesheet" href="/SpaceDrive/css/profile.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

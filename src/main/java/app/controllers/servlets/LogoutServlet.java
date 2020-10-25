@@ -1,4 +1,4 @@
-package app.servlets;
+package app.controllers.servlets;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;

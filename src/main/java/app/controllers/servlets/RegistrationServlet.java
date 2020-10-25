@@ -1,4 +1,4 @@
-package app.servlets;
+package app.controllers.servlets;
 
 import app.models.User;
 import app.repositories.UsersRepositoryJdbcImpl;
@@ -47,7 +47,7 @@ public class RegistrationServlet extends HttpServlet {
         user.setPassword(HashPassword.hashing(password));
 
         Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd");
 
         String date = formatForDateNow.format(dateNow);
         user.setDateRegistration(date);
@@ -57,7 +57,6 @@ public class RegistrationServlet extends HttpServlet {
         if (status) {
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
-            req.setAttribute("login", login);
             req.getRequestDispatcher("/Home.ftl").forward(req, resp);
         } else {
             req.setAttribute("errMessage", "this user already exists");

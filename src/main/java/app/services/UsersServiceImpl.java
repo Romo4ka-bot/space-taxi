@@ -13,8 +13,8 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public boolean authUser(User user) {
-        return usersRepository.authenticateUser(user);
+    public User authUser(String login) {
+        return usersRepository.authenticateUser(login);
     }
 
     @Override
@@ -34,5 +34,10 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public User getUserById(Long user_id) {
         return usersRepository.findById(user_id);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        usersRepository.update(user);
     }
 }

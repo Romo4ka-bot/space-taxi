@@ -11,17 +11,17 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private SimpleJdbcTemplate template;
 
     //language=SQL
-    private final String SQL_SELECT_LOG_AND_PASS = "select * from \"users\" where login = ? and password = ?";
-
-    //language=SQL
     private final String SQL_SELECT_USER_LOG = "select * from users where login = ?";
 
     //language=SQL
-    private final String SQL_INSERT_USER = "insert into \"users\"(name, surname, login, password, gender) " +
-            "values(?, ?, ?, ?, ?);";
+    private final String SQL_INSERT_USER = "insert into users(name, surname, login, password, gender, date_registration) " +
+            "values(?, ?, ?, ?, ?, ?);";
 
     //language=SQL
-    private String SQL_SELECT_BY_ID = "select * from \"users\" where id = ?";
+    private String SQL_SELECT_BY_ID = "select * from users where id = ?";
+
+    //language=SQL
+    private String SQL_UPDATE = "update users set name = ?, surname = ?, photo = ?, date_birthday = ?, gender = ?, info = ? where id = ?";
 
     private RowMapper<User> userRowMapper = row -> User.builder()
             .id(row.getLong("id"))
@@ -30,9 +30,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .login(row.getString("login"))
             .password(row.getString("password"))
             .gender(row.getString("gender"))
-//            .dateBirthday(row.getString("date_birthday"))
-//            .dateRegistration(row.getString("date_registration"))
-//            .info(row.getString("info"))
+            .dateBirthday(row.getString("date_birthday"))
+            .dateRegistration(row.getString("date_registration"))
+            .info(row.getString("info"))
             .build();
 
 
@@ -42,12 +42,11 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public boolean authenticateUser(User entity) {
-
-        String login = entity.getLogin();
-        String password = entity.getPassword();
-        List<User> list = template.query(SQL_SELECT_LOG_AND_PASS, userRowMapper, login, password);
-        return !list.isEmpty();
+    public User authenticateUser(String login) {
+        List<User> list = template.query(SQL_SELECT_USER_LOG, userRowMapper, login);
+        if (!list.isEmpty())
+            return list.get(0);
+        else return null;
     }
 
     @Override
@@ -69,12 +68,21 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         String login = entity.getLogin();
         String password = entity.getPassword();
         String gender = entity.getGender();
-        template.update(SQL_INSERT_USER, name, surname, login, password, gender);
+        String dateRegistration = entity.getDateRegistration();
+        template.update(SQL_INSERT_USER, name, surname, login, password, gender, dateRegistration);
     }
 
     @Override
     public void update(User entity) {
+        Long id = entity.getId();
+        String name = entity.getName();
+        String surname = entity.getSurname();
+        String photo = entity.getPhoto();
+        String dateBirthday = entity.getDateBirthday();
+        String gender = entity.getGender();
+        String info = entity.getInfo();
 
+        template.update(SQL_UPDATE, name, surname, photo, dateBirthday, gender, info, id);
     }
 
     @Override

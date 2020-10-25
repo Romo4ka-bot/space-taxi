@@ -1,4 +1,4 @@
-package app.servlets;
+package app.controllers.servlets;
 
 import app.models.User;
 

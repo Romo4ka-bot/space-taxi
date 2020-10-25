@@ -32,9 +32,10 @@
 
             </div>
             <div class="comments_heading">${feed.countReview} Отзывов</div>
-            <form method="post">
+            <form action="ReviewServlet" method="post">
                 <div class="comment_us">
                     <div class="comment_us__input">
+                        <input type="hidden" name="id" value="${feed.id}">
                         <textarea name="comment" placeholder="Оставьте свой отзыв..."></textarea>
                     </div>
                     <div class="comment_us__btn">

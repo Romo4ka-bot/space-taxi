@@ -6,6 +6,7 @@ import app.repositories.ReviewRepository;
 import java.util.List;
 
 public class ReviewServiceImpl implements ReviewService {
+
     ReviewRepository reviewRepository;
 
     public ReviewServiceImpl(ReviewRepository reviewRepository) {
@@ -20,5 +21,10 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public int getReviewCountById(Long feed_id) {
         return getReviewByFeedId(feed_id).size();
+    }
+
+    @Override
+    public void addReview(Long feed_id, Long user_id, String date, String content) {
+        reviewRepository.saveReview(feed_id, user_id, date, content);
     }
 }

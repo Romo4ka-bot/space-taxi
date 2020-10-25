@@ -18,9 +18,9 @@
                         <div class="form-group ">
                             <label for="sort_by__select">Сортировать по:</label>
                             <select class="form-control" id="sort_by__select">
+                                <option>Умолчанию</option>
                                 <option>Цене по убыванию</option>
                                 <option>Цене по возрастанию</option>
-                                <option>Популярности</option>
                             </select>
                         </div>
                     </div>

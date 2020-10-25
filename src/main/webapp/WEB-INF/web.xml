@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>login-servlet</servlet-name>
-        <servlet-class>app.servlets.LoginServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.LoginServlet</servlet-class>
     </servlet>
 
 
@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>start-servlet</servlet-name>
-        <servlet-class>app.servlets.StartServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.StartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>registration-servlet</servlet-name>
-        <servlet-class>app.servlets.RegistrationServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.RegistrationServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -37,7 +37,7 @@
 
     <servlet>
         <servlet-name>feed-servlet</servlet-name>
-        <servlet-class>app.servlets.FeedServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.FeedServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -47,7 +47,7 @@
 
     <servlet>
         <servlet-name>home-servlet</servlet-name>
-        <servlet-class>app.servlets.HomeServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.HomeServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -58,7 +58,7 @@
 
     <servlet>
         <servlet-name>info-servlet</servlet-name>
-        <servlet-class>app.servlets.InfoServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.InfoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -69,7 +69,7 @@
 
     <servlet>
         <servlet-name>news-servlet</servlet-name>
-        <servlet-class>app.servlets.NewsServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.NewsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -79,12 +79,52 @@
 
     <servlet>
         <servlet-name>profile-servlet</servlet-name>
-        <servlet-class>app.servlets.ProfileServlet</servlet-class>
+        <servlet-class>app.controllers.servlets.ProfileServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>profile-servlet</servlet-name>
         <url-pattern>/ProfileServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ticket-servlet</servlet-name>
+        <servlet-class>app.controllers.servlets.TicketServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ticket-servlet</servlet-name>
+        <url-pattern>/TicketServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout-servlet</servlet-name>
+        <servlet-class>app.controllers.servlets.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logout-servlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>profile-edit-servlet</servlet-name>
+        <servlet-class>app.controllers.servlets.ProfileEditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>profile-edit-servlet</servlet-name>
+        <url-pattern>/ProfileEditServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>review-servlet</servlet-name>
+        <servlet-class>app.controllers.servlets.ReviewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>review-servlet</servlet-name>
+        <url-pattern>/ReviewServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>

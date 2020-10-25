@@ -4,11 +4,13 @@ import app.models.User;
 
 public interface UsersService {
 
-    boolean authUser(User user);
+    User authUser(String login);
 
     boolean regUser(User user);
 
     boolean userIsExist(String login);
 
     User getUserById(Long user_id);
+
+    void updateUser(User user);
 }

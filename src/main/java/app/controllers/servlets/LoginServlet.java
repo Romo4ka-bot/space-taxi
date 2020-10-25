@@ -1,4 +1,4 @@
-package app.servlets;
+package app.controllers.servlets;
 
 import app.models.User;
 import app.repositories.UsersRepository;
@@ -34,20 +34,15 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        User user = User.builder().build();
-
-        user.setLogin(login);
-        user.setPassword(HashPassword.hashing(password));
-
-        boolean userValidate = usersService.authUser(user);
+        User user = usersService.authUser(login);
         String check = request.getParameter("check");
 
 
-        if (userValidate) {
+        if (user != null && user.getPassword().equals(HashPassword.hashing(password))) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            request.setAttribute("login", login);
             request.getRequestDispatcher("/Home.ftl").forward(request, response);
+
         } else {
             request.setAttribute("errMessage", "Invalid user credentials");
             request.getRequestDispatcher("/Login.ftl").forward(request, response);
