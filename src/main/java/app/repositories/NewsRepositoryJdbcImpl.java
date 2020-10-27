@@ -11,10 +11,10 @@ public class NewsRepositoryJdbcImpl implements NewsRepository {
     private SimpleJdbcTemplate template;
 
     //language=SQL
-    private String SQL_SELECT_BY_ID = "select * from news where id = ?";
+    private static final String SQL_SELECT_BY_ID = "select * from news where id = ?";
 
     //language=SQL
-    private String SQL_SELECT = "select * from news";
+    private static final String SQL_SELECT = "select * from news";
 
     private RowMapper<News> newsRowMapper = row -> News.builder()
             .id(row.getLong("id"))

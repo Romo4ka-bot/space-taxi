@@ -1,4 +1,4 @@
-package app.controllers.servlets;
+package app.servlets;
 
 import app.models.User;
 import app.repositories.*;

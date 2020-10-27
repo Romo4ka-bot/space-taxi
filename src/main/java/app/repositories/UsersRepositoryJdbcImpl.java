@@ -11,17 +11,17 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private SimpleJdbcTemplate template;
 
     //language=SQL
-    private final String SQL_SELECT_USER_LOG = "select * from users where login = ?";
+    private static final String SQL_SELECT_USER_LOG = "select * from users where login = ?";
 
     //language=SQL
-    private final String SQL_INSERT_USER = "insert into users(name, surname, login, password, gender, date_registration) " +
+    private static final String SQL_INSERT_USER = "insert into users(name, surname, login, password, gender, date_registration) " +
             "values(?, ?, ?, ?, ?, ?);";
 
     //language=SQL
-    private String SQL_SELECT_BY_ID = "select * from users where id = ?";
+    private static final String SQL_SELECT_BY_ID = "select * from users where id = ?";
 
     //language=SQL
-    private String SQL_UPDATE = "update users set name = ?, surname = ?, photo = ?, date_birthday = ?, gender = ?, info = ? where id = ?";
+    private static final String SQL_UPDATE = "update users set name = ?, surname = ?, photo = ?, date_birthday = ?, gender = ?, info = ? where id = ?";
 
     private RowMapper<User> userRowMapper = row -> User.builder()
             .id(row.getLong("id"))

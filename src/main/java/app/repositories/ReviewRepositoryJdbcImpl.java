@@ -15,10 +15,10 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     private FeedService feedService;
 
     //language=SQL
-    private String SQL_SELECT_BY_ID = "select * from review where feed_id = ?";
+    private static final String SQL_SELECT_BY_ID = "select * from review where feed_id = ?";
 
     //language=SQL
-    private String SQL_INSERT = "insert into review(feed_id, users_id, date, content) values(?, ?, ?, ?);";
+    private static final String SQL_INSERT = "insert into review(feed_id, users_id, date, content) values(?, ?, ?, ?);";
 
     protected RowMapper<Review> reviewRowMapper = row -> Review.builder()
             .feed(feedService.getFeedById(row.getLong("feed_id")))

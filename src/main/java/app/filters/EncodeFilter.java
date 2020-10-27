@@ -1,15 +1,14 @@
-package app.controllers.filters;
+package app.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter(filterName = "charsetFilter", urlPatterns = {"/ProfileEditServlet"})
 public class EncodeFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -17,13 +16,10 @@ public class EncodeFilter implements Filter {
         servletRequest.setCharacterEncoding("UTF-8");
         servletResponse.setCharacterEncoding("UTF-8");
 
-        servletResponse.setContentType("text/html;charset=UTF-8");
-
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-
     }
 }

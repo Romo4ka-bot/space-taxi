@@ -46,15 +46,23 @@
         <div class="center__element">
             <div class="element__ask">
                 <p>Остались вопросы или есть предложения по сайту?
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                        Свяжитесь с нами
-                    </button>
+                    <#if user??>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#staticBackdrop2">
+                            Свяжитесь с нами
+                        </button>
+                        <#else>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#staticBackdrop1">
+                                Свяжитесь с нами
+                            </button>
+                    </#if>
                 </p>
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    <!-- Modal1 -->
+    <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -64,25 +72,52 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="post">
+                <form action="SupportMessageServlet" method="post">
                     <div class="modal-body">
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="first-name" class="col-form-label">Имя:</label>
-                                <input type="text" class="form-control" id="first-name">
+                                <input name="name" type="text" class="form-control" id="first-name">
                             </div>
                             <div class="col-md-6">
                                 <label for="last-name" class="col-form-label">Фамилия:</label>
-                                <input type="text" class="form-control" id="last-name">
+                                <input name="surname" type="text" class="form-control" id="last-name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-form-label">Email:</label>
-                            <input type="text" class="form-control" id="email">
+                            <input name="email" type="text" class="form-control" id="email">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <textarea name="content" class="form-control" id="message-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Свяжитесь с нами</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="SupportMessageServlet" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea name="content" class="form-control" id="message-text"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -100,8 +135,6 @@
     </div>
 
     <link rel="stylesheet" href="SpaceDrive/css/about_us.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

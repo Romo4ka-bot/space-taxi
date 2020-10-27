@@ -37,7 +37,7 @@
                     <div class="comment_us">
                         <div class="comment_us__input">
                             <input type="hidden" name="feed_id" value="${feed.id}">
-                            <textarea name="comment" placeholder="Оставьте свой отзыв..."></textarea>
+                            <textarea name="comment" id="comment_inp" placeholder="Оставьте свой отзыв..."></textarea>
                         </div>
                         <div class="comment_us__btn">
                             <button type="submit">Send</button>
@@ -64,57 +64,6 @@
                         </div>
                     </div>
                 </#list>
-                <#--                <div class="comment">-->
-                <#--                    <div class="comment__image">-->
-                <#--                        <img src="SpaceDrive/img/space-shuttle.jpg">-->
-                <#--                    </div>-->
-                <#--                    <div class="comment__inform">-->
-                <#--                        <div class="comment__author">-->
-                <#--                            <div class="author__name">Roman</div>-->
-                <#--                            <div class="author__day">22.10.2020</div>-->
-                <#--                        </div>-->
-                <#--                        <div class="comment__text">-->
-                <#--                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
-                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.-->
-                <#--                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
-                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>-->
-                <#--                        </div>-->
-                <#--                    </div>-->
-                <#--                </div>-->
-                <#--                <div class="comment">-->
-                <#--                    <div class="comment__image">-->
-                <#--                        <img src="SpaceDrive/img/space-shuttle.jpg">-->
-                <#--                    </div>-->
-                <#--                    <div class="comment__inform">-->
-                <#--                        <div class="comment__author">-->
-                <#--                            <div class="author__name">Roman</div>-->
-                <#--                            <div class="author__day">22.10.2020</div>-->
-                <#--                        </div>-->
-                <#--                        <div class="comment__text">-->
-                <#--                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
-                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.-->
-                <#--                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
-                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>-->
-                <#--                        </div>-->
-                <#--                    </div>-->
-                <#--                </div>-->
-                <#--                <div class="comment">-->
-                <#--                    <div class="comment__image">-->
-                <#--                        <img src="SpaceDrive/img/space-shuttle.jpg">-->
-                <#--                    </div>-->
-                <#--                    <div class="comment__inform">-->
-                <#--                        <div class="comment__author">-->
-                <#--                            <div class="author__name">Roman</div>-->
-                <#--                            <div class="author__day">22.10.2020</div>-->
-                <#--                        </div>-->
-                <#--                        <div class="comment__text">-->
-                <#--                            <p>Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
-                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.-->
-                <#--                                Donec id est facilisis, tempor mi eu, auctor neque. Quisque ut porttitor lectus.-->
-                <#--                                Morbi sit amet venenatis nulla. Mauris accumsan venenatis orci non rutrum.</p>-->
-                <#--                        </div>-->
-                <#--                    </div>-->
-                <#--                </div>-->
             </div>
         </div>
 
@@ -124,7 +73,9 @@
         </div>
     </#if>
 
+
     <link rel="stylesheet" href="/SpaceDrive/css/ticket_page.css">
+    <script src="/SpaceDrive/js/comment.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
