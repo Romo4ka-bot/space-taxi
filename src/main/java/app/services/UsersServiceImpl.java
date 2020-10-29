@@ -14,12 +14,12 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public User authUser(String login) {
-        return usersRepository.authenticateUser(login);
+        return usersRepository.findByLogin(login);
     }
 
     @Override
     public boolean regUser(User user) {
-        if (userIsExist(user.getLogin())) {
+        if (userIsExist(user.getLogin()) == null) {
             usersRepository.save(user);
             return true;
         }
@@ -27,7 +27,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public boolean userIsExist(String login) {
+    public User userIsExist(String login) {
         return usersRepository.findByLogin(login);
     }
 
@@ -39,5 +39,10 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public void updateUser(User user) {
         usersRepository.update(user);
+    }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return usersRepository.findByLogin(login);
     }
 }

@@ -5,25 +5,33 @@ import app.repositories.UsersRepository;
 import app.repositories.UsersRepositoryJdbcImpl;
 import app.services.UsersService;
 import app.services.UsersServiceImpl;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.*;
 import javax.sql.DataSource;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
+@MultipartConfig
 public class ProfileEditServlet extends HttpServlet {
 
     private UsersService usersService;
+
+    private final static String UPLOAD_DIR = "/Users/romanleontev/Documents/GitHub/space-taxi/data";
+
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         DataSource dataSource = (DataSource) config.getServletContext().getAttribute("dataSource");
         UsersRepository usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
         usersService = new UsersServiceImpl(usersRepositoryJdbcImpl);
+        super.init(config);
     }
 
     @Override
@@ -34,22 +42,40 @@ public class ProfileEditServlet extends HttpServlet {
         String date = req.getParameter("date");
         String gender = req.getParameter("gender");
         String info = req.getParameter("info");
+        String uploadDir = getServletConfig().getInitParameter("uploadDir");
+        Part file = req.getPart("filename");
 
-        System.out.println(date);
+        String imgName = UUID.randomUUID().toString() +
+                "-" +
+                file.getSubmittedFileName();
+
+        IOUtils.copyLarge(
+                file.getInputStream(),
+                new FileOutputStream(uploadDir +
+                        File.separator + imgName
+
+                )
+        );
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (name != null)
+        String nameCheck = name.replace(" ", "");
+        String surnameCheck = name.replace(" ", "");
+
+        if (!name.equals("") && !nameCheck.equals(""))
             user.setName(name);
-        if (surname != null)
+        if (!surname.equals("") && !surnameCheck.equals(""))
             user.setSurname(surname);
-        if (date != null)
+        if (!date.equals(""))
             user.setDateBirthday(date);
+        if (!file.getSubmittedFileName().equals(""))
+            user.setPhoto(imgName);
 
         user.setGender(gender);
         user.setInfo(info);
 
         req.setAttribute("user", user);
+
 
         usersService.updateUser(user);
         session.setAttribute("user", user);

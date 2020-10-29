@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-//@WebFilter
+@WebFilter(filterName = "loginFilter", urlPatterns = {"/LoginServlet"})
 public class LoginFilter implements Filter {
 
     private UsersService usersService;
@@ -38,25 +38,29 @@ public class LoginFilter implements Filter {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        User user = usersService.authUser(login);
-        String check = request.getParameter("check");
+        if (login != null && password != null) {
+            User user = usersService.authUser(login);
+            String check = request.getParameter("check");
 
-        if (user != null && user.getPassword().equals(HashPassword.hashing(password))) {
+            if (user != null && user.getPassword().equals(HashPassword.hashing(password))) {
 
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
 
-            if (check != null) {
-                Cookie cookie = new Cookie("userLogin", login);
-                cookie.setMaxAge(60 * 60 * 24 * 365);
-                response.addCookie(cookie);
+                if (check != null) {
+                    Cookie cookie = new Cookie("userLogin", login);
+                    cookie.setMaxAge(60 * 60 * 24 * 365);
+                    response.addCookie(cookie);
+                }
+                request.getRequestDispatcher("/Home.ftl").forward(request, response);
+
+            } else {
+                request.setAttribute("errMessage", "Invalid user credentials");
+                request.getRequestDispatcher("/Login.ftl").forward(request, response);
             }
-            request.getRequestDispatcher("/Home.ftl").forward(request, response);
-
-        } else {
-            request.setAttribute("errMessage", "Invalid user credentials");
-            request.getRequestDispatcher("/Login.ftl").forward(request, response);
         }
+
+        filterChain.doFilter(request, response);
     }
 
     @Override

@@ -20,6 +20,7 @@
                     <div class="login__welcome__text">Sign up</div>
                 </div>
 
+                <#if errMessage??><span style="color: red">${errMessage}</span></#if>
                 <div class="login__form">
                     <div id="error_text" class="error_text"></div>
                     <form id="form" action="RegistrationServlet" method="post">
@@ -88,7 +89,7 @@
                             </div>
                             <div class="input__div">
                                 <div class="input__text">Password</div>
-                                <input name="password1" id="password1" class="input" type="text">
+                                <input name="password1" id="password1" class="input" type="password">
                             </div>
                         </div>
                         <div class="form__input">
@@ -102,7 +103,7 @@
                             </div>
                             <div class="input__div">
                                 <div class="input__text">Password</div>
-                                <input name="password2" id="password2" class="input" type="text">
+                                <input name="password2" id="password2" class="input" type="password">
                             </div>
                         </div>
                         <div class="form__btn">

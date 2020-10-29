@@ -51,7 +51,7 @@
                 <#list list as list>
                     <div class="comment">
                         <div class="comment__image">
-                            <img src="SpaceDrive/img/space-shuttle.jpg">
+                            <img src="/img?filename=${user.photo}">
                         </div>
                         <div class="comment__inform">
                             <div class="comment__author">

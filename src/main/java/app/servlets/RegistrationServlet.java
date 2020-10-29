@@ -16,6 +16,8 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegistrationServlet extends HttpServlet {
 
@@ -36,28 +38,42 @@ public class RegistrationServlet extends HttpServlet {
         String surname = req.getParameter("second_name");
         String login = req.getParameter("email");
         String gender = req.getParameter("gender");
-        String password = req.getParameter("password1");
+        String password1 = req.getParameter("password1");
+        String password2 = req.getParameter("password2");
 
-        User user = User.builder().build();
+        Pattern patternLogin = Pattern.compile("^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$");
+        Matcher matcherLogin = patternLogin.matcher(login);
 
-        user.setName(name);
-        user.setSurname(surname);
-        user.setLogin(login);
-        user.setGender(gender);
-        user.setPassword(HashPassword.hashing(password));
+        Pattern patternNames = Pattern.compile("^[А-Яа-яЁёA-Za-z]+$");
+        Matcher matcherName = patternNames.matcher(name);
+        Matcher matcherSurname = patternNames.matcher(surname);
 
-        Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd");
+        if (matcherLogin.find() && matcherName.find() && matcherSurname.find() && password1.equals(password2)) {
 
-        String date = formatForDateNow.format(dateNow);
-        user.setDateRegistration(date);
+            User user = User.builder().build();
 
-        boolean status = usersService.regUser(user);
+            user.setName(name);
+            user.setSurname(surname);
+            user.setLogin(login);
+            user.setGender(gender);
+            user.setPassword(HashPassword.hashing(password1));
 
-        if (status) {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", user);
-            req.getRequestDispatcher("/Home.ftl").forward(req, resp);
+            Date dateNow = new Date();
+            SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd");
+
+            String date = formatForDateNow.format(dateNow);
+            user.setDateRegistration(date);
+
+            boolean status = usersService.regUser(user);
+
+            if (status) {
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
+                req.getRequestDispatcher("/Home.ftl").forward(req, resp);
+            } else {
+                req.setAttribute("errMessage", "this user already exists");
+                req.getRequestDispatcher("/Registration.ftl").forward(req, resp);
+            }
         } else {
             req.setAttribute("errMessage", "this user already exists");
             req.getRequestDispatcher("/Registration.ftl").forward(req, resp);

@@ -4,7 +4,7 @@
     <#if user??>
         <div class="users_profile">
             <div class="edit">
-                <img class="users_photo" src="SpaceDrive/img/icon-spaceman.jpg"><br>
+                <img class="users_photo" src="/img?filename=${user.photo}"><br>
                 <p><a href="ProfileEditServlet"><img src="SpaceDrive/img/settings.png">Редактировать</a></p>
             </div>
             <div class="users_information">

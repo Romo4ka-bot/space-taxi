@@ -3,14 +3,14 @@
 <@base.main>
     <#if user??>
         <div class="settings">
-            <form action="ProfileEditServlet" method="post">
+            <form action="ProfileEditServlet" method="post" enctype="multipart/form-data">
                 <div class="change_photo">
-                    <img src="SpaceDrive/img/icon-spaceman.jpg">
+                    <img src="/img?filename=${user.photo}">
                 </div>
                 <div class="union">
                     <div class="change_photo">
                         <p>Сменить аватарку</p>
-                        <input type="file" accept=".jpg, .jpeg, .png">
+                        <input name="filename" type="file" accept=".jpg, .jpeg, .png">
                     </div>
                     <div class="change_name">
                         <div class="first_name">

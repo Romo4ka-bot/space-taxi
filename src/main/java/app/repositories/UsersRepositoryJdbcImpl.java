@@ -29,6 +29,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .surname(row.getString("surname"))
             .login(row.getString("login"))
             .password(row.getString("password"))
+            .photo(row.getString("photo"))
             .gender(row.getString("gender"))
             .dateBirthday(row.getString("date_birthday"))
             .dateRegistration(row.getString("date_registration"))
@@ -42,17 +43,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public User authenticateUser(String login) {
+    public User findByLogin(String login) {
         List<User> list = template.query(SQL_SELECT_USER_LOG, userRowMapper, login);
-        if (!list.isEmpty())
-            return list.get(0);
-        else return null;
-    }
-
-    @Override
-    public boolean findByLogin(String login) {
-        List<User> list = template.query(SQL_SELECT_USER_LOG, userRowMapper, login);
-        return list.isEmpty();
+        return !list.isEmpty() ? list.get(0) : null;
     }
 
     @Override
@@ -69,11 +62,13 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         String password = entity.getPassword();
         String gender = entity.getGender();
         String dateRegistration = entity.getDateRegistration();
+
         template.update(SQL_INSERT_USER, name, surname, login, password, gender, dateRegistration);
     }
 
     @Override
     public void update(User entity) {
+
         Long id = entity.getId();
         String name = entity.getName();
         String surname = entity.getSurname();

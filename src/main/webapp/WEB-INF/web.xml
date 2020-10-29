@@ -108,6 +108,10 @@
     <servlet>
         <servlet-name>profile-edit-servlet</servlet-name>
         <servlet-class>app.servlets.ProfileEditServlet</servlet-class>
+        <init-param>
+            <param-name>uploadDir</param-name>
+            <param-value>/Users/romanleontev/Documents/GitHub/space-taxi/data</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>
@@ -143,20 +147,6 @@
     <servlet-mapping>
         <servlet-name>support-message-servlet</servlet-name>
         <url-pattern>/SupportMessageServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>upload-servlet</servlet-name>
-        <servlet-class>app.servlets.DirUploadServlet</servlet-class>
-        <init-param>
-            <param-name>uploadDir</param-name>
-            <param-value>/Users/romanleontev/Documents/GitHub/space-taxi/data</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>upload-servlet</servlet-name>
-        <url-pattern>/UploadServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
