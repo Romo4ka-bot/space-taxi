@@ -106,14 +106,9 @@ public class FeedServlet extends HttpServlet {
             }
         }
 
-//        req.setAttribute("list", feeds);
-//        req.getRequestDispatcher("/Feed.ftl").forward(req, resp);
-
-        System.out.println(feeds);
         resp.setContentType("application/json");
         String json = new Gson().toJson(feeds);
         resp.setCharacterEncoding("UTF-8");
-        System.out.println(json);
         resp.getWriter().write(json);
     }
 

@@ -23,9 +23,6 @@
                                 <option value="priceIncrease">Цене по возрастанию</option>
                                 <option value="priceDecrease">Цене по убыванию</option>
                             </select>
-                            <#--                            <input name="threeStars" type="checkbox"><span>3 звезды</span>-->
-                            <#--                            <input name="fourStars" type="checkbox"><span>4 звезды</span>-->
-                            <#--                            <input name="fiveStars" type="checkbox"><span>5 звезд</span>-->
                             <input name="stars" type="checkbox" value="3"><span>3 звезды</span>
                             <input name="stars" type="checkbox" value="4"><span>4 звезды</span>
                             <input name="stars" type="checkbox" value="5"><span>5 звезд</span>
@@ -62,11 +59,7 @@
                                 <div class="heading__review"><a href="TicketServlet?id=${list.id}">Отзывы</a></div>
                                 <div class="heading__name"><a href="TicketServlet?id=${list.id}">${list.title}</a></div>
                                 <div style="font-size: 20px">
-                                    <#if list.stars == 5>
-                                        ${list.stars} звезд
-                                    <#else>
-                                        ${list.stars} звезды
-                                    </#if>
+                                        ${list.stars} звезд(ы)
                                 </div>
                             </div>
                             <div class="text__cont">

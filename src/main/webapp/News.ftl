@@ -1,11 +1,11 @@
 <#import "Base.ftl" as base>
 
 <@base.main>
-    <div>
-        <span style="display: flex;  justify-content: center">Интересные новости от наших клиентов</span>
+    <div style="padding: 0 100px">
+        <span style="display: flex;  justify-content: center; font-size: 30px; margin-top: 20px">Интересные новости от наших клиентов</span>
         <#if user??>
             <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#staticBackdrop" style="display: flex;  justify-content: center">
+                    data-target="#staticBackdrop">
                 Создать новость
             </button>
         <#else>
@@ -33,27 +33,6 @@
         </div>
     </div>
     <div class="bottom">
-        <#--        <div class="pagination">-->
-        <#--            <nav>-->
-        <#--                <ul class="pagination">-->
-        <#--                    <li class="page-item">-->
-        <#--                        <a class="page-link" href="#" aria-label="Previous">-->
-        <#--                            <span aria-hidden="true">&laquo;</span>-->
-        <#--                            <span class="sr-only">Previous</span>-->
-        <#--                        </a>-->
-        <#--                    </li>-->
-        <#--                    <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-        <#--                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-        <#--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-        <#--                    <li class="page-item">-->
-        <#--                        <a class="page-link" href="#" aria-label="Next">-->
-        <#--                            <span aria-hidden="true">&raquo;</span>-->
-        <#--                            <span class="sr-only">Next</span>-->
-        <#--                        </a>-->
-        <#--                    </li>-->
-        <#--                </ul>-->
-        <#--            </nav>-->
-        <#--        </div>-->
         <div class="bottom__div">
         </div>
     </div>
@@ -71,19 +50,19 @@
                 </div>
                 <form action="NewsServlet" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
-                            <div class="form-group">
-                                <label for="title" class="col-form-label">Название:</label>
-                                <textarea name="title" class="form-control" id="title" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="content" class="col-form-label">Содержание:</label>
-                                <textarea name="content" class="form-control" id="content" required></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="title" class="col-form-label">Название:</label>
+                            <textarea name="title" class="form-control" id="title" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-form-label">Содержание:</label>
+                            <textarea name="content" class="form-control" id="content" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="photo" class="col-form-label">Фотография:</label>
                             <input name="photo" type="file" accept=".jpg, .jpeg, .png" class="form-control" id="photo">
                         </div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                         <button type="submit" class="btn btn-primary">Отправить</button>

@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="HomeServlet">Домашняя</a>
+                    <a class="nav-link" href="HomeServlet">Домашняя</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="FeedServlet">Путевки</a>

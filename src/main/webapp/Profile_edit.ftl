@@ -55,6 +55,8 @@
             <div class="bottom__div">
             </div>
         </div>
+        <#else>
+            Чтобы редактировать профиль <a href="LoginServlet">авторизируйтесь</a>.
     </#if>
 
     <link rel="stylesheet" href="/SpaceDrive/css/profile_edit.css">

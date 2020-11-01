@@ -27,7 +27,7 @@ $(function () {
             dataType: 'json',
             success: function (result) {
                 $("#child").detach();
-                $("<div id=\"child\" class=\"card_holder\" style=\"width: 100%; margin: 10px 0;\">").appendTo($("#parent"));
+                $("<div id=\"child\" class=\"card_holder\" style=\"width: 100%;\">").appendTo($("#parent"));
                 for (var i = 0; i < result.length; i++) {
                     $('#child').append($(' <div class="card_item"> ' +
                         '<div class="card__image"> <img src="SpaceDrive/img/icon-spaceman.jpg"> ' +

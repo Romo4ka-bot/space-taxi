@@ -42,6 +42,12 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
 
     @Override
     public void save(Review entity) {
+
+        Long feed_id = entity.getFeed().getId();
+        Long user_id = entity.getUser().getId();
+        String date = entity.getDate();
+        String content = entity.getContent();
+        template.update(SQL_INSERT, feed_id, user_id, date, content);
     }
 
     @Override
@@ -57,10 +63,5 @@ public class ReviewRepositoryJdbcImpl implements ReviewRepository {
     @Override
     public List<Review> findAllByFeedId(Long feed_id) {
         return template.query(SQL_SELECT_BY_ID, reviewRowMapper, feed_id);
-    }
-
-    @Override
-    public void saveReview(Long feed_id, Long user_id, String date, String content) {
-        template.update(SQL_INSERT, feed_id, user_id, date, content);
     }
 }

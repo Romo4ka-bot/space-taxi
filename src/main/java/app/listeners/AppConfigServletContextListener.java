@@ -18,12 +18,12 @@ public class AppConfigServletContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 
-        Properties properties = new Properties();
-        try {
-            properties.load(servletContextEvent.getServletContext().getResourceAsStream("/WEB-INF/properties/db.properties"));
-        } catch (IOException e) {
-            throw new IllegalStateException(e);
-        }
+//        Properties properties = new Properties();
+//        try {
+//            properties.load(servletContextEvent.getServletContext().getResourceAsStream("/WEB-INF/properties/db.properties"));
+//        } catch (IOException e) {
+//            throw new IllegalStateException(e);
+//        }
 
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/space-taxi");

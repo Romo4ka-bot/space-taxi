@@ -10,7 +10,7 @@ public interface ReviewService {
 
     int getReviewCountById(Long feed_id);
 
-    void addReview(Long feed_id, Long user_id, String date, String content);
+    void addReview(Review review);
 
     List<Review> getAllById(Long feed_id);
 }

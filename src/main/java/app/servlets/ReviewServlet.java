@@ -1,5 +1,7 @@
 package app.servlets;
 
+import app.models.Feed;
+import app.models.Review;
 import app.models.User;
 import app.repositories.*;
 import app.services.*;
@@ -18,13 +20,14 @@ import java.util.Date;
 public class ReviewServlet extends HttpServlet {
 
     private ReviewService reviewService;
+    private FeedService feedService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         DataSource dataSource = (DataSource) config.getServletContext().getAttribute("dataSource");
 
         FeedRepository feedRepository = new FeedRepositoryJdbcImpl(dataSource);
-        FeedService feedService = new FeedServiceImpl(feedRepository);
+        feedService = new FeedServiceImpl(feedRepository);
 
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
         UsersService usersService = new UsersServiceImpl(usersRepository);
@@ -40,12 +43,20 @@ public class ReviewServlet extends HttpServlet {
 
         String content = req.getParameter("comment");
         Long feed_id = Long.parseLong(req.getParameter("feed_id"));
+        Feed feed = feedService.getFeedById(feed_id);
 
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd");
         String date = formatForDateNow.format(dateNow);
 
-        reviewService.addReview(feed_id, user.getId(), date, content);
+        Review review = Review.builder().build();
+
+        review.setFeed(feed);
+        review.setUser(user);
+        review.setDate(date);
+        review.setContent(content);
+
+        reviewService.addReview(review);
         resp.sendRedirect("TicketServlet?id=" + feed_id);
     }
 }

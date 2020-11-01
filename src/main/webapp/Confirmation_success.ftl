@@ -12,7 +12,7 @@
         </div>
         <div>
             <form action="HomeServlet" method="get">
-                <button>Главная</button>
+                <button style="border-radius: 5px">Главная</button>
             </form>
         </div>
     </div>
