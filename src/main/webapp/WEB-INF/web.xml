@@ -154,6 +154,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>confirmation-success-servlet</servlet-name>
+        <servlet-class>app.servlets.ConfirmationSuccessServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>confirmation-success-servlet</servlet-name>
+        <url-pattern>/ConfirmationSuccessServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>freemarker</servlet-name>
         <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
 

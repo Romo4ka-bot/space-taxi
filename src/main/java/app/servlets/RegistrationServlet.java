@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet {
         Matcher matcherName = patternNames.matcher(name);
         Matcher matcherSurname = patternNames.matcher(surname);
 
-        if (matcherLogin.find() && matcherName.find() && matcherSurname.find() && password1.equals(password2)) {
+        if (matcherLogin.matches() && matcherName.matches() && matcherSurname.matches() && password1.equals(password2)) {
 
             User user = User.builder().build();
 

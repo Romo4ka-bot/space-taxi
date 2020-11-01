@@ -32,6 +32,7 @@ public class AppConfigServletContextListener implements ServletContextListener {
         hikariConfig.setPassword("111");
         hikariConfig.setMaximumPoolSize(10);
 
+
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
         servletContextEvent.getServletContext().setAttribute("dataSource", dataSource);
 

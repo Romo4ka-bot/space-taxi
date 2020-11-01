@@ -21,7 +21,8 @@
                         </div>
                         <div class="prise__buy">
                             <div class="prise__count">${feed.price}₽</div>
-                            <div class="prise__btn"><a href="ConfirmationServlet">Забронировать</a></div>
+                            <#if errMessage??><span style="color: red">${errMessage}</span></#if>
+                            <div class="prise__btn"><a href="ConfirmationServlet?id=${feed.id}">Забронировать</a></div>
                         </div>
                     </div>
                 </div>

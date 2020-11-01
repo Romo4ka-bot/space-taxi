@@ -9,10 +9,11 @@
             </div>
             <div class="holder__text_holder">
                 <div class="text_holder__text">
-                    <div class="text__heading">Hotel Kolumbus</div>
-                    <div class="text__day">Дата вылета: 22.10.2020</div>
-                    <div class="text__prise">29900₽</div>
-                    <div class="text__btn"><a href="#">Забронировать</a></div>
+                    <div class="text__heading">${feed.title}</div>
+                    <div class="text__day">Дата вылета: ${feed.dateFrom}</div>
+                    <div class="text__day">Дата вылета: ${feed.dateTo}</div>
+                    <div class="text__prise">${feed.price}₽</div>
+                    <div class="text__btn"><a href="ConfirmationSuccessServlet?id=${feed.id}">Забронировать</a></div>
                 </div>
             </div>
         </div>
