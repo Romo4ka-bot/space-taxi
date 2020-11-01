@@ -49,8 +49,8 @@
     </div>
 
 
-    <div class="card_holder" id="v">
-        <div id="vstavka" style="width: 100%; margin: 10px 0;">
+    <div class="card_holder" id="parent">
+        <div id="child" style="width: 100%; margin: 10px 0;">
             <#list list as list>
                 <div class="card_item">
                     <div class="card__image">

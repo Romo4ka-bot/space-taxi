@@ -26,10 +26,10 @@ $(function () {
             },
             dataType: 'json',
             success: function (result) {
-                $("#vstavka").detach();
-                $("<div id=\"vstavka\" class=\"card_holder\" style=\"width: 100%; margin: 10px 0;\">").appendTo($("#v"));
+                $("#child").detach();
+                $("<div id=\"child\" class=\"card_holder\" style=\"width: 100%; margin: 10px 0;\">").appendTo($("#parent"));
                 for (var i = 0; i < result.length; i++) {
-                    $('#vstavka').append($(' <div class="card_item"> ' +
+                    $('#child').append($(' <div class="card_item"> ' +
                         '<div class="card__image"> <img src="SpaceDrive/img/icon-spaceman.jpg"> ' +
                         '</div> ' +
                         '<div class="card__info"> ' +
@@ -53,18 +53,6 @@ $(function () {
                         '</div> ' +
                         '</div> '
                     ))
-                    // $('#vstavka').append($(' <a class=\"name\" href="/Event?id=' + result[i]['id'] + '">' + result[i]['name'] + '</a>' +
-                    //     '<div class="event">' +
-                    //     '  <div class="h_p">' +
-                    //     '<div class="img">' +
-                    //     ' <img  alt="" class="photo" src="/img?id=' + result[i]['image']['id'] + '">' +
-                    //     '</div>' +
-                    //     '</div>' +
-                    //     '<div class="descr"><p>' + result[i]['description'] +
-                    //     '</p>  <br><p>' + result[i]['date'] + '</p>' +
-                    //     '           <br> <p>' + result[i]['time'] + '</p> <br><p>' + result[i]['category_id']['name'] + '</p>' +
-                    //     '</div></div></div>'
-                    // ))
                 }
             }
         });
