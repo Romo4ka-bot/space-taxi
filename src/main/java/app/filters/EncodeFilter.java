@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(filterName = "charsetFilter", urlPatterns = {"/ProfileEditServlet", "/TicketServlet"})
+@WebFilter(filterName = "charsetFilter", urlPatterns = {"/ProfileEditServlet", "/TicketServlet", "/NewsServlet"})
 public class EncodeFilter implements Filter {
 
     @Override

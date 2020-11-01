@@ -7,18 +7,19 @@ import java.util.List;
 public interface FeedRepository extends CrudRepository<Feed> {
     Feed findById(Long id);
 
-    List<Feed> findAllByIncreasePrice();
-    List<Feed> findAllByDecreasePrice();
+    List<Feed> findAllWithSearch(String search, List<Integer> listStars);
+    List<Feed> findAllByIncreasePrice(String search, List<Integer> listStars);
+    List<Feed> findAllByDecreasePrice(String search, List<Integer> listStars);
 
-    List<Feed> findAllByLeftLimitPrice(Long priceTo);
-    List<Feed> findAllByIncreaseAndLeftLimitPrice(Long priceTo);
-    List<Feed> findAllByDecreaseAndLeftLimitPrice(Long priceTo);
+    List<Feed> findAllByLeftLimitPrice(Long priceTo, String search, List<Integer> listStars);
+    List<Feed> findAllByIncreaseAndLeftLimitPrice(Long priceTo, String search, List<Integer> listStars);
+    List<Feed> findAllByDecreaseAndLeftLimitPrice(Long priceTo, String search, List<Integer> listStars);
 
-    List<Feed> findAllByRightLimitPrice(Long priceFrom);
-    List<Feed> findAllByIncreaseAndRightLimitPrice(Long priceFrom);
-    List<Feed> findAllByDecreaseAndRightLimitPrice(Long priceFrom);
+    List<Feed> findAllByRightLimitPrice(Long priceFrom, String search, List<Integer> listStars);
+    List<Feed> findAllByIncreaseAndRightLimitPrice(Long priceFrom, String search, List<Integer> listStars);
+    List<Feed> findAllByDecreaseAndRightLimitPrice(Long priceFrom, String search, List<Integer> listStars);
 
-    List<Feed> findAllByLimitPrice(Long priceFrom, Long priceTo);
-    List<Feed> findAllByIncreaseAndLimitPrice(Long priceFrom, Long priceTo);
-    List<Feed> findAllByDecreaseAndLimitPrice(Long priceFrom, Long priceTo);
+    List<Feed> findAllByLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars);
+    List<Feed> findAllByIncreaseAndLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStarsv);
+    List<Feed> findAllByDecreaseAndLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars);
 }

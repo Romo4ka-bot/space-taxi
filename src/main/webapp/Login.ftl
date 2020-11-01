@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="login__form">
-                    <#if errMessage??><span style="color: red">${errMessage}</span></#if>
+<#--                    <#if errMessage??><span style="color: red">${errMessage}</span></#if>-->
                     <div id="error_text" class="error_text">The username or password you entered is incorrect</div>
                     <form id="form" action="LoginServlet" method="post">
 

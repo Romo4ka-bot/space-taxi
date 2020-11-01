@@ -21,4 +21,5 @@ public class Feed {
     private String dateTo;
     private String description;
     private Integer price;
+    private Integer stars;
 }

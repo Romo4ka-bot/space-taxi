@@ -13,7 +13,6 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import javax.sql.DataSource;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
@@ -22,8 +21,6 @@ import java.util.UUID;
 public class ProfileEditServlet extends HttpServlet {
 
     private UsersService usersService;
-
-    private final static String UPLOAD_DIR = "/Users/romanleontev/Documents/GitHub/space-taxi/data";
 
 
     @Override

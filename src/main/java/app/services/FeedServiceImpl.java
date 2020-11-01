@@ -23,57 +23,62 @@ public class FeedServiceImpl implements FeedService {
     }
 
     @Override
-    public List<Feed> getAllByIncreasePrice() {
-        return feedRepository.findAllByIncreasePrice();
+    public List<Feed> getAllWithSearch(String search, List<Integer> listStars) {
+        return feedRepository.findAllWithSearch(search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByDecreasePrice() {
-        return feedRepository.findAllByDecreasePrice();
+    public List<Feed> getAllByIncreasePrice(String search, List<Integer> listStars) {
+        return feedRepository.findAllByIncreasePrice(search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByLeftLimitPrice(Long priceTo) {
-        return feedRepository.findAllByLeftLimitPrice(priceTo);
+    public List<Feed> getAllByDecreasePrice(String search, List<Integer> listStars) {
+        return feedRepository.findAllByDecreasePrice(search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByIncreaseAndLeftLimitPrice(Long priceTo) {
-        return feedRepository.findAllByIncreaseAndLeftLimitPrice(priceTo);
+    public List<Feed> getAllByLeftLimitPrice(Long priceTo, String search, List<Integer> listStars) {
+        return feedRepository.findAllByLeftLimitPrice(priceTo, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByDecreaseAndLeftLimitPrice(Long priceTo) {
-        return feedRepository.findAllByDecreaseAndLeftLimitPrice(priceTo);
+    public List<Feed> getAllByIncreaseAndLeftLimitPrice(Long priceTo, String search, List<Integer> listStars) {
+        return feedRepository.findAllByIncreaseAndLeftLimitPrice(priceTo, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByRightLimitPrice(Long priceFrom) {
-        return feedRepository.findAllByRightLimitPrice(priceFrom);
+    public List<Feed> getAllByDecreaseAndLeftLimitPrice(Long priceTo, String search, List<Integer> listStars) {
+        return feedRepository.findAllByDecreaseAndLeftLimitPrice(priceTo, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByIncreaseAndRightLimitPrice(Long priceFrom) {
-        return feedRepository.findAllByIncreaseAndRightLimitPrice(priceFrom);
+    public List<Feed> getAllByRightLimitPrice(Long priceFrom, String search, List<Integer> listStars) {
+        return feedRepository.findAllByRightLimitPrice(priceFrom, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByDecreaseAndRightLimitPrice(Long priceFrom) {
-        return feedRepository.findAllByDecreaseAndRightLimitPrice(priceFrom);
+    public List<Feed> getAllByIncreaseAndRightLimitPrice(Long priceFrom, String search, List<Integer> listStars) {
+        return feedRepository.findAllByIncreaseAndRightLimitPrice(priceFrom, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByLimitPrice(Long priceFrom, Long priceTo) {
-        return feedRepository.findAllByLimitPrice(priceFrom, priceTo);
+    public List<Feed> getAllByDecreaseAndRightLimitPrice(Long priceFrom, String search, List<Integer> listStars) {
+        return feedRepository.findAllByDecreaseAndRightLimitPrice(priceFrom, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByIncreaseAndLimitPrice(Long priceFrom, Long priceTo) {
-        return feedRepository.findAllByIncreaseAndLimitPrice(priceFrom, priceTo);
+    public List<Feed> getAllByLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars) {
+        return feedRepository.findAllByLimitPrice(priceFrom, priceTo, search, listStars);
     }
 
     @Override
-    public List<Feed> getAllByDecreaseAndLimitPrice(Long priceFrom, Long priceTo) {
-        return feedRepository.findAllByDecreaseAndLimitPrice(priceFrom, priceTo);
+    public List<Feed> getAllByIncreaseAndLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars) {
+        return feedRepository.findAllByIncreaseAndLimitPrice(priceFrom, priceTo, search, listStars);
+    }
+
+    @Override
+    public List<Feed> getAllByDecreaseAndLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars) {
+        return feedRepository.findAllByDecreaseAndLimitPrice(priceFrom, priceTo, search, listStars);
     }
 }

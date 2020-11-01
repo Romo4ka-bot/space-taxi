@@ -43,7 +43,7 @@ public class AppConfigServletContextListener implements ServletContextListener {
         FeedRepository feedRepository = new FeedRepositoryJdbcImpl(dataSource);
         FeedService feedService = new FeedServiceImpl(feedRepository);
 
-        NewsRepository newsRepository = new NewsRepositoryJdbcImpl(dataSource);
+        NewsRepository newsRepository = new NewsRepositoryJdbcImpl(dataSource, usersService);
         NewsService newsService = new NewsServiceImpl(newsRepository);
 
         ReviewRepository reviewRepository = new ReviewRepositoryJdbcImpl(dataSource, usersService, feedService);

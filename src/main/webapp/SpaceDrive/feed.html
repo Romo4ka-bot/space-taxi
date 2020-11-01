@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feed</title>
+    <link rel="stylesheet" href="css/feed.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">SpaceDrive</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Домашняя</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Путевки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Профиль</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Новости</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Про нас</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Войти</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="search">
+            <form action="#" method="post">
+                <div class="search__bar">
+                    <input type="text" class="search_term" placeholder="What are you looking for?">
+                    <button type="button" id="btn_open" class="btn_open_more">
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <button type="submit" id="btn_search" class="btn_search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div id="search__div" class="search__div">
+                    <div class="search__config">
+                        <div class="config__sort_by">
+                            <div class="form-group ">
+                                <label for="sort_by__select">Сортировать по:</label>
+                                <select class="form-control" id="sort_by__select">
+                                    <option>Цене по убыванию</option>
+                                    <option>Цене по возрастанию</option>
+                                    <option>Популярности</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="config__prise_interval">
+                            <div class="prise_interval">
+                                <div class="prise_interval__text">Цена от</div>
+                                <div class="prise_interval__input">
+                                    <input type="text" class="form-control" placeholder="0">
+                                </div>
+                                <div class="prise_interval__text">до</div>
+                                <div class="prise_interval__input">
+                                    <input type="text" class="form-control" placeholder="*">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="card_holder">
+            <div class="card_item">
+                <div class="card__image">
+                    <img src="img/icon-spaceman.jpg">
+                </div>
+                <div class="card__info">
+                    <div class="card__text">
+                        <div class="text__heading">
+                            <div class="heading__review"><a href="#">7 отзывов</a></div>
+                            <div class="heading__name"><a href="#">Hotel Kolumbus</a></div>
+                        </div>
+                        <div class="text__cont">
+                            <div class="cont__date">22.10.2020 - 05.11.2020</div>
+                            <div class="cont__inf">2 ночи | 2-x мест.</div>
+                        </div>
+                    </div>
+                    <div class="card__prise">
+                        <div class="prise__count">29990₽</div>
+                        <div class="prise__btn"><a href="#">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_item">
+                <div class="card__image">
+                    <img src="img/icon-spaceman.jpg">
+                </div>
+                <div class="card__info">
+                    <div class="card__text">
+                        <div class="text__heading">
+                            <div class="heading__review"><a href="#">7 отзывов</a></div>
+                            <div class="heading__name"><a href="#">Hotel Kolumbus</a></div>
+                        </div>
+                        <div class="text__cont">
+                            <div class="cont__date">22.10.2020 - 05.11.2020</div>
+                            <div class="cont__inf">2 ночи | 2-x мест.</div>
+                        </div>
+                    </div>
+                    <div class="card__prise">
+                        <div class="prise__count">29990₽</div>
+                        <div class="prise__btn"><a href="#">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_item">
+                <div class="card__image">
+                    <img src="img/icon-spaceman.jpg">
+                </div>
+                <div class="card__info">
+                    <div class="card__text">
+                        <div class="text__heading">
+                            <div class="heading__review"><a href="#">7 отзывов</a></div>
+                            <div class="heading__name"><a href="#">Hotel Kolumbus</a></div>
+                        </div>
+                        <div class="text__cont">
+                            <div class="cont__date">22.10.2020 - 05.11.2020</div>
+                            <div class="cont__inf">2 ночи | 2-x мест.</div>
+                        </div>
+                    </div>
+                    <div class="card__prise">
+                        <div class="prise__count">29990₽</div>
+                        <div class="prise__btn"><a href="#">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_item">
+                <div class="card__image">
+                    <img src="img/icon-spaceman.jpg">
+                </div>
+                <div class="card__info">
+                    <div class="card__text">
+                        <div class="text__heading">
+                            <div class="heading__review"><a href="#">7 отзывов</a></div>
+                            <div class="heading__name"><a href="#">Hotel Kolumbus</a></div>
+                        </div>
+                        <div class="text__cont">
+                            <div class="cont__date">22.10.2020 - 05.11.2020</div>
+                            <div class="cont__inf">2 ночи | 2-x мест.</div>
+                        </div>
+                    </div>
+                    <div class="card__prise">
+                        <div class="prise__count">29990₽</div>
+                        <div class="prise__btn"><a href="#">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_item">
+                <div class="card__image">
+                    <img src="img/icon-spaceman.jpg">
+                </div>
+                <div class="card__info">
+                    <div class="card__text">
+                        <div class="text__heading">
+                            <div class="heading__review"><a href="#">7 отзывов</a></div>
+                            <div class="heading__name"><a href="#">Hotel Kolumbus</a></div>
+                        </div>
+                        <div class="text__cont">
+                            <div class="cont__date">22.10.2020 - 05.11.2020</div>
+                            <div class="cont__inf">2 ночи | 2-x мест.</div>
+                        </div>
+                    </div>
+                    <div class="card__prise">
+                        <div class="prise__count">29990₽</div>
+                        <div class="prise__btn"><a href="#">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bottom">
+        <div class="pagination">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="bottom__div">
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/feed.js"></script>
+</body>
+</html>

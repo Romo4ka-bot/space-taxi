@@ -20,7 +20,7 @@
                     <div class="login__welcome__text">Sign up</div>
                 </div>
 
-                <#if errMessage??><span style="color: red">${errMessage}</span></#if>
+<#--                <#if errMessage??><span style="color: red">${errMessage}</span></#if>-->
                 <div class="login__form">
                     <div id="error_text" class="error_text"></div>
                     <form id="form" action="RegistrationServlet" method="post">

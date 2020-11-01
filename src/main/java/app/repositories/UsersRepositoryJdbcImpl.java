@@ -23,6 +23,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     //language=SQL
     private static final String SQL_UPDATE = "update users set name = ?, surname = ?, photo = ?, date_birthday = ?, gender = ?, info = ? where id = ?";
 
+    //language=SQL
+    private static final String SQL_SELECT_ALL_WITH_PAGES = "select * from users order by id limit ? offset ?;";
+
     private RowMapper<User> userRowMapper = row -> User.builder()
             .id(row.getLong("id"))
             .name(row.getString("name"))
@@ -88,5 +91,10 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public User findById(Long id) {
         return template.query(SQL_SELECT_BY_ID, userRowMapper, id).get(0);
+    }
+
+    @Override
+    public List<User> findAll(int page, int size) {
+        return template.query(SQL_SELECT_ALL_WITH_PAGES, userRowMapper, size, page * size);
     }
 }

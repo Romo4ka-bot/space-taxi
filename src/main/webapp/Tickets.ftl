@@ -37,7 +37,7 @@
                     <div class="comment_us">
                         <div class="comment_us__input">
                             <input type="hidden" name="feed_id" value="${feed.id}">
-                            <textarea name="comment" id="comment_inp" placeholder="Оставьте свой отзыв..."></textarea>
+                            <textarea name="comment" id="comment_inp" placeholder="Оставьте свой отзыв..." required></textarea>
                         </div>
                         <div class="comment_us__btn">
                             <button type="submit">Send</button>

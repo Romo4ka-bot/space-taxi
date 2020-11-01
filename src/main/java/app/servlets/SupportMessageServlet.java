@@ -3,7 +3,7 @@ package app.servlets;
 import app.models.SupportMessage;
 import app.models.User;
 import app.repositories.SupportMessageRepository;
-import app.repositories.SupportMessageRepositoryImpl;
+import app.repositories.SupportMessageRepositoryJdbcImpl;
 import app.repositories.UsersRepositoryJdbcImpl;
 import app.services.SupportMessageService;
 import app.services.SupportMessageServiceImpl;
@@ -33,7 +33,7 @@ public class SupportMessageServlet extends HttpServlet {
         UsersRepositoryJdbcImpl usersRepositoryJdbcImpl = new UsersRepositoryJdbcImpl(dataSource);
         usersService = new UsersServiceImpl(usersRepositoryJdbcImpl);
 
-        SupportMessageRepository supportMessageRepository = new SupportMessageRepositoryImpl(dataSource, usersService);
+        SupportMessageRepository supportMessageRepository = new SupportMessageRepositoryJdbcImpl(dataSource, usersService);
         supportMessageService = new SupportMessageServiceImpl(supportMessageRepository);
     }
 

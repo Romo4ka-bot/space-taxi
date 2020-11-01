@@ -2,13 +2,14 @@
 
 <@base.main>
     <div class="search">
-        <form action="FeedServlet" method="post">
+        <form>
             <div class="search__bar">
-                <input name="search" type="text" class="search_term" placeholder="What are you looking for?">
+                <input id="search" name="search" type="text" class="search_term"
+                       placeholder="What are you looking for?">
                 <button type="button" id="btn_open" class="btn_open_more">
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <button type="submit" id="btn_search" class="btn_search">
+                <button type="button" id="btn_search" class="btn_search">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
@@ -22,17 +23,23 @@
                                 <option value="priceIncrease">Цене по возрастанию</option>
                                 <option value="priceDecrease">Цене по убыванию</option>
                             </select>
+                            <#--                            <input name="threeStars" type="checkbox"><span>3 звезды</span>-->
+                            <#--                            <input name="fourStars" type="checkbox"><span>4 звезды</span>-->
+                            <#--                            <input name="fiveStars" type="checkbox"><span>5 звезд</span>-->
+                            <input name="stars" type="checkbox" value="3"><span>3 звезды</span>
+                            <input name="stars" type="checkbox" value="4"><span>4 звезды</span>
+                            <input name="stars" type="checkbox" value="5"><span>5 звезд</span>
                         </div>
                     </div>
                     <div class="config__prise_interval">
                         <div class="prise_interval">
                             <div class="prise_interval__text">Цена от</div>
                             <div class="prise_interval__input">
-                                <input name="priceFrom" type="text" class="form-control" placeholder="0">
+                                <input id="priceFrom" name="priceFrom" type="text" class="form-control" placeholder="0">
                             </div>
                             <div class="prise_interval__text">до</div>
                             <div class="prise_interval__input">
-                                <input name="priceTo" type="text" class="form-control" placeholder="*">
+                                <input id="priceTo" name="priceTo" type="text" class="form-control" placeholder="*">
                             </div>
                         </div>
                     </div>
@@ -42,62 +49,49 @@
     </div>
 
 
-    <div class="card_holder">
-        <#list list as list>
-            <div class="card_item">
-                <div class="card__image">
-                    <img src="SpaceDrive/img/icon-spaceman.jpg">
-                </div>
-                <div class="card__info">
-                    <div class="card__text">
-                        <div class="text__heading">
-                            <div class="heading__review"><a href="TicketServlet?id=${list.id}">Отзывы</a></div>
-                            <div class="heading__name"><a href="TicketServlet?id=${list.id}">${list.title}</a></div>
+    <div class="card_holder" id="v">
+        <div id="vstavka" style="width: 100%; margin: 10px 0;">
+            <#list list as list>
+                <div class="card_item">
+                    <div class="card__image">
+                        <img src="SpaceDrive/img/icon-spaceman.jpg">
+                    </div>
+                    <div class="card__info">
+                        <div class="card__text">
+                            <div class="text__heading">
+                                <div class="heading__review"><a href="TicketServlet?id=${list.id}">Отзывы</a></div>
+                                <div class="heading__name"><a href="TicketServlet?id=${list.id}">${list.title}</a></div>
+                                <div style="font-size: 20px">
+                                    <#if list.stars == 5>
+                                        ${list.stars} звезд
+                                    <#else>
+                                        ${list.stars} звезды
+                                    </#if>
+                                </div>
+                            </div>
+                            <div class="text__cont">
+                                <div class="cont__date">${list.dateFrom} - ${list.dateTo}</div>
+                                <div class="cont__inf">${list.description}</div>
+                            </div>
                         </div>
-                        <div class="text__cont">
-                            <div class="cont__date">${list.dateFrom} - ${list.dateTo}</div>
-                            <div class="cont__inf">${list.description}</div>
+                        <div class="card__prise">
+                            <div class="prise__count">${list.price}₽</div>
+                            <div class="prise__btn"><a href="TicketServlet?id=${list.id}">Подробнее</a></div>
                         </div>
                     </div>
-                    <div class="card__prise">
-                        <div class="prise__count">${list.price}₽</div>
-                        <div class="prise__btn"><a href="TicketServlet?id=${list.id}">Подробнее</a></div>
-                    </div>
                 </div>
-            </div>
-        </#list>
+            </#list>
+        </div>
     </div>
 
     <div class="bottom">
-<#--        <div class="pagination">-->
-<#--            <nav>-->
-<#--                <ul class="pagination">-->
-<#--                    <li class="page-item">-->
-<#--                        <a class="page-link" href="#" aria-label="Previous">-->
-<#--                            <span aria-hidden="true">&laquo;</span>-->
-<#--                            <span class="sr-only">Previous</span>-->
-<#--                        </a>-->
-<#--                    </li>-->
-<#--                    <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-<#--                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<#--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<#--                    <li class="page-item">-->
-<#--                        <a class="page-link" href="#" aria-label="Next">-->
-<#--                            <span aria-hidden="true">&raquo;</span>-->
-<#--                            <span class="sr-only">Next</span>-->
-<#--                        </a>-->
-<#--                    </li>-->
-<#--                </ul>-->
-<#--            </nav>-->
-<#--        </div>-->
         <div class="bottom__div">
         </div>
     </div>
 
     <link rel="stylesheet" href="SpaceDrive/css/feed.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="SpaceDrive/js/ajaxrequest.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>

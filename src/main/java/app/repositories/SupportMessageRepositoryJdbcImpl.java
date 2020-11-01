@@ -6,7 +6,7 @@ import app.services.UsersService;
 import javax.sql.DataSource;
 import java.util.List;
 
-public class SupportMessageRepositoryImpl implements SupportMessageRepository {
+public class SupportMessageRepositoryJdbcImpl implements SupportMessageRepository {
 
     private final DataSource dataSource;
     private SimpleJdbcTemplate template;
@@ -30,7 +30,7 @@ public class SupportMessageRepositoryImpl implements SupportMessageRepository {
             .content(row.getString("content"))
             .build();
 
-    public SupportMessageRepositoryImpl(DataSource dataSource, UsersService usersService) {
+    public SupportMessageRepositoryJdbcImpl(DataSource dataSource, UsersService usersService) {
         this.dataSource = dataSource;
         this.usersService = usersService;
         template = new SimpleJdbcTemplate(dataSource);

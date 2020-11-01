@@ -13,6 +13,7 @@ import ru.kpfu.itis.orm.annotation.Table;
 public class News {
     @Constraint(pk = true)
     private Long id;
+    private User user;
     private String title;
     private String photo;
     private String content;

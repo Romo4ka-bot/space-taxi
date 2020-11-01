@@ -9,19 +9,19 @@ public interface FeedService {
 
     List<Feed> getAll();
 
-    List<Feed> getAllByIncreasePrice();
+    List<Feed> getAllWithSearch(String search, List<Integer> listStars);
+    List<Feed> getAllByIncreasePrice(String search, List<Integer> listStars);
+    List<Feed> getAllByDecreasePrice(String search, List<Integer> listStars);
 
-    List<Feed> getAllByDecreasePrice();
+    List<Feed> getAllByLeftLimitPrice(Long priceTo, String search, List<Integer> listStars);
+    List<Feed> getAllByIncreaseAndLeftLimitPrice(Long priceTo, String search, List<Integer> listStars);
+    List<Feed> getAllByDecreaseAndLeftLimitPrice(Long priceTo, String search, List<Integer> listStars);
 
-    List<Feed> getAllByLeftLimitPrice(Long priceTo);
-    List<Feed> getAllByIncreaseAndLeftLimitPrice(Long priceTo);
-    List<Feed> getAllByDecreaseAndLeftLimitPrice(Long priceTo);
+    List<Feed> getAllByRightLimitPrice(Long priceFrom, String search, List<Integer> listStars);
+    List<Feed> getAllByIncreaseAndRightLimitPrice(Long priceFrom, String search, List<Integer> listStars);
+    List<Feed> getAllByDecreaseAndRightLimitPrice(Long priceFrom, String search, List<Integer> listStars);
 
-    List<Feed> getAllByRightLimitPrice(Long priceFrom);
-    List<Feed> getAllByIncreaseAndRightLimitPrice(Long priceFrom);
-    List<Feed> getAllByDecreaseAndRightLimitPrice(Long priceFrom);
-
-    List<Feed> getAllByLimitPrice(Long priceFrom, Long priceTo);
-    List<Feed> getAllByIncreaseAndLimitPrice(Long priceFrom, Long priceTo);
-    List<Feed> getAllByDecreaseAndLimitPrice(Long priceFrom, Long priceTo);
+    List<Feed> getAllByLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars);
+    List<Feed> getAllByIncreaseAndLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars);
+    List<Feed> getAllByDecreaseAndLimitPrice(Long priceFrom, Long priceTo, String search, List<Integer> listStars);
 }

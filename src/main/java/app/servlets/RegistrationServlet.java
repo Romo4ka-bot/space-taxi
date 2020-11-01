@@ -67,9 +67,10 @@ public class RegistrationServlet extends HttpServlet {
             boolean status = usersService.regUser(user);
 
             if (status) {
+                User userDb = usersService.getUserByLogin(login);
                 HttpSession session = req.getSession();
-                session.setAttribute("user", user);
-                req.getRequestDispatcher("/Home.ftl").forward(req, resp);
+                session.setAttribute("user", userDb);
+                req.getRequestDispatcher("/Login.ftl").forward(req, resp);
             } else {
                 req.setAttribute("errMessage", "this user already exists");
                 req.getRequestDispatcher("/Registration.ftl").forward(req, resp);

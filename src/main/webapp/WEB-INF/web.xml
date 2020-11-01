@@ -68,6 +68,10 @@
     <servlet>
         <servlet-name>news-servlet</servlet-name>
         <servlet-class>app.servlets.NewsServlet</servlet-class>
+        <init-param>
+            <param-name>uploadDir</param-name>
+            <param-value>/Users/romanleontev/Documents/GitHub/space-taxi/data</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>
